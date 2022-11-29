@@ -8,8 +8,11 @@ File:        Forward Sequence, Reverse Sequence pair
 ### 커맨드
 
 tar.gz 
+
     tar -xf rawdata.fastq_1.tar.gz
+
 gz 
+
     gzip -r rawdata.fastq_1.gz
 
 ### 결과
@@ -52,7 +55,8 @@ forward끼리, reverse끼리 합쳐줌
 Tool: Trinity  
 
 ### 커맨드
-Trinity --seqType fq --left Merged_tissues_1.fastq --right Merged_tissues_2.fastq --output trinity_out --max_memory 100G --CPU 8
+
+    Trinity --seqType fq --left Merged_tissues_1.fastq --right Merged_tissues_2.fastq --output trinity_out --max_memory 100G --CPU 8
 
 ### 옵션
 --seqType:  reads format 을 지정합니다. (fq: fastq, fa: fasta)  
