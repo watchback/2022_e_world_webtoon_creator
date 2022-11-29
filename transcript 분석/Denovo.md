@@ -9,21 +9,21 @@ File:        Forward Sequence, Reverse Sequence pair
 
 tar.gz 
 
-    tar -xf rawdata.fastq_1.tar.gz
+    tar -zxvf rawdata.fastq_1.tar.gz
 
 gz 
 
-    gzip -r rawdata.fastq_1.gz
+    gzip -d rawdata.fastq_1.gz
 
 ### 결과
 rawdata_1.fastq  
-fawdata_2.fastq  
+rawdata_2.fastq  
 
 # **1. Preprocessing(Quality Control)**
 
-File format: FASTQ  
-File:        Forward Sequence, Reverse Sequence pair  
-Tool: Trimmomatic  
+File format: **FASTQ**  
+File: **Forward Sequence, Reverse Sequence pair**  
+Tool: **Trimmomatic**  
 
 ### 커맨드 (.sh 파일로 만들어 실행)
 
@@ -50,9 +50,11 @@ forward끼리, reverse끼리 합쳐줌
     cat Brain_1.fastq, Liver_1.fastq, Testis_1.fastq >> Merged_tissues_1.fastq 
     cat Brain_2.fastq, Liver_2.fastq, Testis_2.fastq >> Merged_tissues_2.fastq
 
+### 결과
+Merged_tissues_1.fastq
+Merged_tissues_2.fastq
 
-> 2-2. De novo assembly
-Tool: Trinity  
+합쳐준 이후 Trinity를 실행합니다.
 
 ### 커맨드
 
