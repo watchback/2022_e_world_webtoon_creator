@@ -1,7 +1,7 @@
 # **0. Raw data 및 환경설정**
 
-File format: FASTQ.gz  
-File:        Forward Sequence, Reverse Sequence pair  
+File format: **FASTQ.gz**  
+File:        **Forward Sequence, Reverse Sequence pair**  
 
 파일이 압축되어 있는 경우 압축 해제
 
@@ -15,6 +15,10 @@ gz
 
     gzip -d rawdata.fastq_1.gz
 
+### 결과
+**rawdata_1.fastq**  
+**rawdata_2.fastq**  
+
 FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
 
 첫번째 줄은 “@” 로 시작하며 Sequence ID  
@@ -23,11 +27,9 @@ FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하�
 
 세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
 
-네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code) 로 이루어져 있습니다.  
+네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code)로 구성 
 
-### 결과
-rawdata_1.fastq  
-rawdata_2.fastq  
+ 
 
 # **1. Preprocessing(Quality Control)**
 
@@ -42,15 +44,15 @@ Tool: **Trimmomatic**
 ### 옵션
 
 ### 결과
-output_forward_paired.fq  
-output_reverse_paired.fq  
-output_forward_unpaired.fq  
-output_reverse_unpaired.fq  
+**output_forward_paired.fq**  
+**output_reverse_paired.fq**  
+**output_forward_unpaired.fq**  
+**output_reverse_unpaired.fq**  
 
 # **2. Concatenation of reads (reference genome 역할을 하는 cDNA 제작)**
 
-De novo RNA-seq 분석을 하게 된다면 일반적으로 여러 samples(주로 multiple tissues)을 가지고 시작하게 됩니다.  
-또한 genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcriptome assembly를 만들어야 합니다.  
+De novo RNA-seq 분석을 하게 된다면 일반적으로 여러 samples(주로 multiple tissues)을 가지고 시작
+genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcriptome assembly 제작 필요  
 
 ## 2-1. 이때 comprehensive 한 transcriptome assembly 를 만들기 위해 여러 samples 의 RNA-seq data를 concatenation 해야합니다. 
 
@@ -62,8 +64,8 @@ forward끼리, reverse끼리 합쳐줌
     cat Brain_2.fastq, Liver_2.fastq, Testis_2.fastq >> Merged_tissues_2.fastq
 
 ### 결과
-Merged_tissues_1.fastq
-Merged_tissues_2.fastq
+**Merged_tissues_1.fastq**  
+**Merged_tissues_2.fastq**  
 
 ## 2-2. *De novo* assembly
 Trinity를 활용하여 assembly 진행
@@ -73,17 +75,17 @@ Trinity를 활용하여 assembly 진행
     Trinity --seqType fq --left Merged_tissues_1.fastq --right Merged_tissues_2.fastq --output trinity_out --max_memory 100G --CPU 8
 
 ### 옵션
---seqType:  reads format 을 지정합니다. (fq: fastq, fa: fasta)  
---left, right: foward, reverse reads 를 지정합니다.  
---output: 생성될 output directory 입니다. (trinity 단어가 들어가야합니다.)  
---max_memory:  assembly 과정중 할당할 최대 memory  입니다.  
---CPU:  사용할 cpu 수 입니다.  
+--seqType:  reads format 을 지정 (fq: fastq, fa: fasta)  
+--left, right: foward, reverse reads 를 지정  
+--output: 생성될 output directory (trinity 단어가 들어가야함)  
+--max_memory:  assembly 과정중 할당할 최대 memory  
+--CPU:  사용할 cpu 수  
 
 ### 결과
-Trinity.fasta  
-TrinityStats.pl  
+**Trinity.fasta**  
+**TrinityStats.pl**  
 
-완료되면 여러 파일들이 생성되는데 이때  Trinity.fasta 라는 파일이 assembly 된 transcriptome 입니다.  
-이 과정 이후에 statistics 를 구하고 싶으면 Trinity tool 의 util directory 내의 TrinityStats.pl 을 통해 할 수 있다.  
+완료되면 여러 파일들이 생성되는데 이때  Trinity.fasta 라는 파일이 assembly 된 transcriptome  
+이 과정 이후에 statistics 를 구하고 싶으면 Trinity tool 의 util directory 내의 TrinityStats.pl을 이용  
 
 ## 2-3. Gene prediction
