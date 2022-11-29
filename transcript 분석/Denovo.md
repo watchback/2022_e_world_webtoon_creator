@@ -15,6 +15,16 @@ gz
 
     gzip -d rawdata.fastq_1.gz
 
+FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
+
+첫번째 줄은 “@” 로 시작하며 Sequence ID  
+
+두번째 줄은 Sequence 서열  
+
+세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
+
+네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code) 로 이루어져 있습니다.  
+
 ### 결과
 rawdata_1.fastq  
 rawdata_2.fastq  
@@ -42,7 +52,8 @@ output_reverse_unpaired.fq
 De novo RNA-seq 분석을 하게 된다면 일반적으로 여러 samples(주로 multiple tissues)을 가지고 시작하게 됩니다.  
 또한 genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcriptome assembly를 만들어야 합니다.  
 
-> 2-1. 이때 comprehensive 한 transcriptome assembly 를 만들기 위해 여러 samples 의 RNA-seq data를 concatenation 해야합니다. 
+## 2-1. 이때 comprehensive 한 transcriptome assembly 를 만들기 위해 여러 samples 의 RNA-seq data를 concatenation 해야합니다. 
+
 forward끼리, reverse끼리 합쳐줌  
 
 ### 커맨드
@@ -54,7 +65,8 @@ forward끼리, reverse끼리 합쳐줌
 Merged_tissues_1.fastq
 Merged_tissues_2.fastq
 
-합쳐준 이후 Trinity를 실행합니다.
+## 2-2. *De novo* assembly
+Trinity를 활용하여 assembly 진행
 
 ### 커맨드
 
@@ -74,4 +86,4 @@ TrinityStats.pl
 완료되면 여러 파일들이 생성되는데 이때  Trinity.fasta 라는 파일이 assembly 된 transcriptome 입니다.  
 이 과정 이후에 statistics 를 구하고 싶으면 Trinity tool 의 util directory 내의 TrinityStats.pl 을 통해 할 수 있다.  
 
-> 2-3. Gene prediction
+## 2-3. Gene prediction
