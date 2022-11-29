@@ -5,8 +5,9 @@ File:        Forward Sequence, Reverse Sequence pair
 
 파일이 압축되어 있는 경우 압축 해제
 커맨드
-tar.gz -> tar -xf rawdata.fastq_1.tar.gz
-gz -> gzip -r rawdata.fastq_1.gz
+
+    tar.gz -> tar -xf rawdata.fastq_1.tar.gz
+    gz -> gzip -r rawdata.fastq_1.gz
 
 결과
 rawdata_1.fastq
