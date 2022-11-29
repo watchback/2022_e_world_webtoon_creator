@@ -69,7 +69,7 @@ Tool: **Trimmomatic**
 
 #### 옵션
 - -threads: thread 수를 지정   
-- ILLUMINACLIP:fastaWithAdaptersEtc:seed mismatches:palindrome clip threshold:simple clip threshold  
+- ILLUMINACLIP: fastaWithAdaptersEtc : seed mismatches : palindrome clip threshold : simple clip threshold  
 fastaWithAdaptersEtc == adaptor 파일, Trimmomatic 프로그램 내에 adaptor 디렉토리에 존재  
 seed mismatches == 최초 16 bases를 seed로 놓고 이를 full match가 허용하는만큼 확장한다. full match에 허용할 mismatch의 최소값(2)  
 palindrome clip threshold == paried-ended data의 경우 score 값(30) /약 50 bases  
@@ -113,7 +113,7 @@ Trinity를 활용하여 assembly 진행
     Trinity --seqType fq --left Merged_tissues_1.fastq --right Merged_tissues_2.fastq --output trinity_out --max_memory 100G --CPU 8
 
 #### 옵션
---seqType:  reads format 을 지정 (fq: fastq, fa: fasta)  
+--seqType: reads format 을 지정 (fq: fastq, fa: fasta)  
 --left, right: foward, reverse reads 를 지정  
 --output: 생성될 output directory (trinity 단어가 들어가야함)  
 --max_memory:  assembly 과정중 할당할 최대 memory  
@@ -135,7 +135,7 @@ Assembled transcripts 의 protein coding genes 을 찾기 위해 TransDecoder �
 
 #### 커맨드
 
-    TransDecoder.LongOrfs   -t   Trinity.fasta
+    TransDecoder.LongOrfs -t Trinity.fasta
 
 #### 옵션
 -t: assembly 를 통해 생성된 Trinity.fasta  
@@ -156,7 +156,7 @@ NCBI 의 BLAST 사용
 
 #### 커맨드
 
-    ncbi-blast-2.x.x+/bin/makeblastdb  -in  swissprot.fasta  -dbtype  prot  
+    ncbi-blast-2.x.x+/bin/makeblastdb -in swissprot.fasta -dbtype prot  
 
 #### 옵션
 -in:  db 형식으로 만들고자 하는 fasta 파일  
@@ -170,20 +170,20 @@ NCBI 의 BLAST 사용
 
 #### 커맨드
 
-    ncbi-blast-2.x.x+/bin/blastp  -query  logest_orfs.pep  -db  swissprot.fasta   -max_target_seqs  1  -outfmt  6  -evalue 1e-5  -num_threads 8  >  blastp.outfmt6  
+    ncbi-blast-2.x.x+/bin/blastp -query logest_orfs.pep -db swissprot.fasta -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 8 > blastp.outfmt6  
 
 #### 옵션
--query:  db 에 search 할 sequence 파일  
+-query: db에 search 할 sequence 파일  
 
--db:  database  
+-db: database  
 
--max_target_seqs:  해당 query 가 matching 되는 sequence 중 몇개를 보여줄지에 대한 parameter  
+-max_target_seqs: 해당 query가 matching 되는 sequence 중 몇개를 보여줄지에 대한 parameter  
 
--outfmt:  output 의 format 의 대한 정보 (0~11 까지 있으며 6 은 tabular format 이다.)  
+-outfmt: output의 format에 대한 정보 (0~11 까지 있으며 6 은 tabular format 이다.)  
 
--evalue:  blast evalue cutoff  
+-evalue: blast evalue cutoff  
 
--num_threads:  사용할 cpu 수  
+-num_threads: 사용할 cpu 수  
 
 #### 결과
 **blastp.outfmt6**  
