@@ -1,4 +1,4 @@
-**0. Raw data 및 환경설정**
+**#0. Raw data 및 환경설정**
 
 File format: FASTQ.gz
 File:        Forward Sequence, Reverse Sequence pair
@@ -12,7 +12,7 @@ gz -> gzip -r rawdata.fastq_1.gz
 rawdata_1.fastq
 fawdata_2.fastq
 
-**1. Preprocessing(Quality Control)**
+**##1. Preprocessing(Quality Control)**
 
 File format: FASTQ
 File:        Forward Sequence, Reverse Sequence pair
@@ -29,7 +29,7 @@ output_reverse_paired.fq
 output_forward_unpaired.fq
 output_reverse_unpaired.fq
 
-**2. Concatenation of reads (reference genome 역할을 하는 cDNA 제작)**
+**##2. Concatenation of reads (reference genome 역할을 하는 cDNA 제작)**
 
 De novo RNA-seq 분석을 하게 된다면 일반적으로 여러 samples (주로 multiple tissues) 을 가지고 시작하게 됩니다.
 또한 genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcriptome assembly 를 만들어야 합니다.
@@ -42,8 +42,8 @@ forward끼리, reverse끼리 합쳐줌
 '''
 cat Brain_1.fastq, Liver_1.fastq, Testis_1.fastq >> Merged_tissues_1.fastq 
 cat Brain_2.fastq, Liver_2.fastq, Testis_2.fastq >> Merged_tissues_2.fastq
- '''
- 
+'''
+
 > 2-2. De novo assembly
 Tool: Trinity
 
