@@ -18,7 +18,7 @@ gz
 ### 결과
 **rawdata_1.fastq**  
 **rawdata_2.fastq**  
-
+---
 FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
 
 첫번째 줄은 “@” 로 시작하며 Sequence ID  
@@ -84,7 +84,7 @@ Trinity를 활용하여 assembly 진행
 ### 결과
 **Trinity.fasta**  
 **TrinityStats.pl**  
-
+---
 완료되면 여러 파일들이 생성되는데 이때  Trinity.fasta 라는 파일이 assembly 된 transcriptome  
 이 과정 이후에 statistics 를 구하고 싶으면 Trinity tool 의 util directory 내의 TrinityStats.pl을 이용  
 
