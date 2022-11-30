@@ -179,7 +179,7 @@ NCBI 의 BLAST 사용
 
 -max_target_seqs: 해당 query가 matching 되는 sequence 중 몇개를 보여줄지에 대한 parameter  
 
--outfmt: output의 format에 대한 정보 (0~11 까지 있으며 6 은 tabular format 이다.)  
+-outfmt: output의 format에 대한 정보 (0~11 까지 있으며 6 은 tabular format)  
 
 -evalue: blast evalue cutoff  
 
@@ -187,3 +187,69 @@ NCBI 의 BLAST 사용
 
 #### 결과
 **blastp.outfmt6**  
+
+### 4-2-3. Gene prediction
+
+이제 blast 결과를 토대로 gene prediction 을 진행  
+transcripts.transdecoder_dir 가 있는 directory 에서 진행  
+
+#### 커맨드
+
+    TransDecoder.Predict -t Trinity.fasta --retain_blastp_hits blastp.outfmt6 --cpu 8 --single_best_orf
+
+#### 옵션
+-t:  Trinity assembly 파일  
+
+--retain_blastp_hits: (4-2-2) 과정에서 얻은 blastp 결과 파일  
+
+--cpu: 사용할 cpu 수  
+
+--single_best_orf: gene prediction 과정 중 하나의 transcripts 에서 6개의 ORFs 를 탐색했을때 가장 best orf 출력  
+
+#### 결과
+**Trinity.fasta.transdecoder.pep** 등 생성  
+
+### 4-2-4. Removing redundant transcripts
+(4-2-1)~(4-2-3) 과정을 통해 gene prediction 은 완료되었으나, transcriptome 이다 보니 불가피하게 isoforms 이 존재  
+Reference genome 의 역할을 하기 위해 representative protein coding genes 만 있는게 좋으므로, redundant 한 transcripts 를 제거하기 위해 CD-hit 사용  
+
+#### 커맨드
+
+    cdhit -i Trinity.fasta.transdecoder.pep -o Trinity.fasta.transdecoder.pep.cdhit -c 0.99 -T 8
+
+#### 옵션
+-i:  TransDecoder 를 통해 geneprediction 이 된 fasta 파일  
+
+-o: otuput   
+
+-c: identity cutoff (0.99: 99% 비슷한 transcripts 의 cluster 중 가장 긴 transcript 선택)  
+
+-T:  사용할 cpu 수  
+
+#### 결과
+**Trinity.fasta.transdecoder.pep.cdhit**  
+**Trinity.fasta.transdecoder.pep.cdhit.clstr**  
+
+---
+
+.cdhit 파일은 sequence,  .cdhit.clstr 파일에는 cluster 가 어떻게 묶였는지에 대한 정보가 담긺  
+얻어진 Trinity.fasta.transdecoder.pep.cdhit 파일을 Non-redundant protein coding sequences (NRCDS) 로 명명하고 진행  
+
+### 4-2-5. NRCDS_Trinity.fasta 파일 생성
+NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 sequence id 를 *de novo* assembly 파일인 Trinity.fasta 에 matching 하여 nucleotide sequence 를 얻는다.  
+
+#### 커맨드
+
+    awk '/>/ {print $1}' Trinity.fasta.transdecoder.pep.cdhit > output.txt
+    sed 's/.p/ /g' output.txt > output2.txt
+    awk '{print $1}' output2.txt > output3.txt
+    sed 's/>//g' output3.txt > TrinitypepID.txt
+    xargs samtools faidx Trinity.fasta <TrinitypepID.txt> NRCDS_sequence.fasta
+
+#### 옵션
+xargs: 대량으로 진행  
+file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 1의 시퀀스 파일을 파싱해서 file2로 저장  
+
+
+#### 결과
+**NRCDS_sequence.fasta**  
