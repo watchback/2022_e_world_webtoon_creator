@@ -1,5 +1,7 @@
 # **0. Raw data 및 환경설정**
-#### 필요한 sortware
+#### 필요한 software
+
+- Trimmomatic  
 
 - Trinity  
 
