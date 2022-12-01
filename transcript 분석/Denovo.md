@@ -308,4 +308,14 @@ file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 
 #### 결과
 **NRCDS_sequence.fasta**  
 
-# 5. 
+# 5. Gene expression level quantification
+## 5-1. Read alignment & Abundance estimation
+
+# 6. DEGs(Differentially expressed genes) analysis 
+## 6-1. Gene expression matrix
+## 6-2. Differential expression analysis
+## 6-3. TMM normalization
+### 6-3-1. trasncript length 정보 준비
+### 6-3-2. Normalization 
+## 6-4. Identifying DEGs
+# 7. Annotation
