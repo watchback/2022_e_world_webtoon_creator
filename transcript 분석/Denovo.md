@@ -27,6 +27,17 @@ PATH 설정 필요
 
 ---
 #### RAW DATA
+  
+FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
+
+첫번째 줄은 “@” 로 시작하며 Sequence ID  
+
+두번째 줄은 Sequence 서열  
+
+세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
+
+네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code)로 구성  
+  
 
 파일이 압축되어 있는 경우 압축 해제  
 
@@ -47,19 +58,6 @@ gz
 **rawdata_1.fastq**  
 **rawdata_2.fastq**  
 
----
-
-FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
-
-첫번째 줄은 “@” 로 시작하며 Sequence ID  
-
-두번째 줄은 Sequence 서열  
-
-세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
-
-네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code)로 구성 
-
- 
 
 # **1. Preprocessing(Quality Control)**
 
