@@ -153,9 +153,9 @@ Tool: **Trinity**
 
 
 # **4. Gene prediction**
-Assembled transcripts 의 protein coding genes 을 찾기 위해 TransDecoder 를 이용  
 
 ## 4-1. 100 amino acids 이상의 ORF 포함하는 transcripts 추출
+Assembled transcripts 의 protein coding genes 을 찾기 위해 TransDecoder 를 이용  
 
 File: **Trinity.fasta**  
 Tool: **TransDecoder**  
@@ -177,12 +177,13 @@ Tool: **TransDecoder**
 ## 4-2. Homology-based search
 
 기존에 잘알려진 protein database (Swissprot DB) 에 homology search 를 하여 gene prediction 과정에 활용  
-NCBI 의 BLAST 사용  
+
+---
+
+### 4-2-1. swissprot.fasta 파일을 download 후 blast db 형식으로 제작
 
 File: **sprot.fasta**  
 Tool: **Blast**  
-
-### 4-2-1. swissprot.fasta 파일을 download 후 blast db 형식으로 제작
 
 #### 커맨드
 
@@ -195,6 +196,8 @@ Tool: **Blast**
 #### 결과
 
 **swissprot.fasta**  
+
+---
 
 ### 4-2-2. db 파일에 transcript assembly 를 homology search
 
@@ -221,6 +224,8 @@ Tool: **Blast**
 #### 결과
 **blastp.outfmt6**  
 
+---
+
 ### 4-2-3. Gene prediction
 
 이제 blast 결과를 토대로 gene prediction 을 진행  
@@ -244,6 +249,8 @@ Tool: **TransDecoder**
 
 #### 결과
 **Trinity.fasta.transdecoder.pep** 등 생성  
+
+---
 
 ### 4-2-4. Removing redundant transcripts
 (4-2-1)~(4-2-3) 과정을 통해 gene prediction 은 완료되었으나, transcriptome 이다 보니 불가피하게 isoforms 이 존재  
@@ -270,6 +277,8 @@ Tool: **CDHit**
 #### 결과
 **Trinity.fasta.transdecoder.pep.cdhit**  
 **Trinity.fasta.transdecoder.pep.cdhit.clstr**  
+
+---
 
 ### 4-2-5. NRCDS_Trinity.fasta 파일 생성
 NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 sequence id 를 *de novo* assembly 파일인 Trinity.fasta 에 matching 하여 nucleotide sequence 를 얻는다.  
@@ -300,3 +309,5 @@ file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 
 
 #### 결과
 **NRCDS_sequence.fasta**  
+
+# 5. 
