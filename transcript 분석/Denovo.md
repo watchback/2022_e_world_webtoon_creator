@@ -27,6 +27,17 @@ PATH 설정 필요
 
 ---
 #### RAW DATA
+  
+FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
+
+첫번째 줄은 “@” 로 시작하며 Sequence ID  
+
+두번째 줄은 Sequence 서열  
+
+세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
+
+네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code)로 구성  
+  
 
 파일이 압축되어 있는 경우 압축 해제  
 
@@ -47,19 +58,6 @@ gz
 **rawdata_1.fastq**  
 **rawdata_2.fastq**  
 
----
-
-FASTQ 파일에는 sequence 서열 뿐만 아니라 quality 정보도 포함하고 있는데  
-
-첫번째 줄은 “@” 로 시작하며 Sequence ID  
-
-두번째 줄은 Sequence 서열  
-
-세번째 줄은 “+” 하나만 있거나, 또는 그 뒤에 첫번째줄의 Sequence ID 의 반복  
-
-네번째 줄은 각 서열의 quality 를 나타내는 기호 (ASCII code)로 구성 
-
- 
 
 # **1. Preprocessing(Quality Control)**
 
@@ -153,9 +151,9 @@ Tool: **Trinity**
 
 
 # **4. Gene prediction**
-Assembled transcripts 의 protein coding genes 을 찾기 위해 TransDecoder 를 이용  
 
 ## 4-1. 100 amino acids 이상의 ORF 포함하는 transcripts 추출
+Assembled transcripts 의 protein coding genes 을 찾기 위해 TransDecoder 를 이용  
 
 File: **Trinity.fasta**  
 Tool: **TransDecoder**  
@@ -177,12 +175,13 @@ Tool: **TransDecoder**
 ## 4-2. Homology-based search
 
 기존에 잘알려진 protein database (Swissprot DB) 에 homology search 를 하여 gene prediction 과정에 활용  
-NCBI 의 BLAST 사용  
+
+---
+
+### 4-2-1. swissprot.fasta 파일을 download 후 blast db 형식으로 제작
 
 File: **sprot.fasta**  
 Tool: **Blast**  
-
-### 4-2-1. swissprot.fasta 파일을 download 후 blast db 형식으로 제작
 
 #### 커맨드
 
@@ -195,6 +194,8 @@ Tool: **Blast**
 #### 결과
 
 **swissprot.fasta**  
+
+---
 
 ### 4-2-2. db 파일에 transcript assembly 를 homology search
 
@@ -221,6 +222,8 @@ Tool: **Blast**
 #### 결과
 **blastp.outfmt6**  
 
+---
+
 ### 4-2-3. Gene prediction
 
 이제 blast 결과를 토대로 gene prediction 을 진행  
@@ -244,6 +247,8 @@ Tool: **TransDecoder**
 
 #### 결과
 **Trinity.fasta.transdecoder.pep** 등 생성  
+
+---
 
 ### 4-2-4. Removing redundant transcripts
 (4-2-1)~(4-2-3) 과정을 통해 gene prediction 은 완료되었으나, transcriptome 이다 보니 불가피하게 isoforms 이 존재  
@@ -270,6 +275,8 @@ Tool: **CDHit**
 #### 결과
 **Trinity.fasta.transdecoder.pep.cdhit**  
 **Trinity.fasta.transdecoder.pep.cdhit.clstr**  
+
+---
 
 ### 4-2-5. NRCDS_Trinity.fasta 파일 생성
 NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 sequence id 를 *de novo* assembly 파일인 Trinity.fasta 에 matching 하여 nucleotide sequence 를 얻는다.  
@@ -300,3 +307,15 @@ file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 
 
 #### 결과
 **NRCDS_sequence.fasta**  
+
+# 5. Gene expression level quantification
+## 5-1. Read alignment & Abundance estimation
+
+# 6. DEGs(Differentially expressed genes) analysis 
+## 6-1. Gene expression matrix
+## 6-2. Differential expression analysis
+## 6-3. TMM normalization
+### 6-3-1. trasncript length 정보 준비
+### 6-3-2. Normalization 
+## 6-4. Identifying DEGs
+# 7. Annotation
