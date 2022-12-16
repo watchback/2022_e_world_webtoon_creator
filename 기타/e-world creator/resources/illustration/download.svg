@@ -1,0 +1,244 @@
+<svg version="1.1" id="Layer_skeleton" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px" height="1000px" viewBox="0 0 1200 1200" style="enable-background:new 0 0 1200 1200;" xml:space="preserve" onload="makeDraggable(evt)">
+                
+                <!--사용자가 업로드한 illustration이 스켈레톤에 추가 됨-->
+                <g id="select_illustration"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="1200px" height="1200px" viewBox="0 0 1200 1200" style="width: 1000px; height: 1000px; object-fit: contain;" xml:space="preserve" data-inject-url="blob:http://localhost:1234/0f5fb74f-1875-44a2-a189-6c8f6b941287">
+<style type="text/css">
+	.st0{fill:#09541E;stroke:#000000;stroke-miterlimit:10;}
+	.st1{fill:#D6A40F;stroke:#000000;stroke-miterlimit:10;}
+	.st2{fill:#D6300F;stroke:#000000;stroke-miterlimit:10;}
+	.st3{fill:#FF954A;stroke:#000000;stroke-miterlimit:10;}
+	.st4{stroke:#000000;stroke-miterlimit:10;}
+	.st5{display:none;}
+	.st6{display:inline;fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st7{display:inline;}
+</style>
+<g id="illustration--inject-1">
+	<rect x="635.7" y="735.3" class="st0" width="40.4" height="370.3"></rect>
+	<rect x="528.7" y="735.7" class="st0" width="42" height="369.5"></rect>
+	<rect x="233.1" y="514.7" class="st0" width="260" height="33"></rect>
+	<rect x="712.7" y="514.7" class="st0" width="262.4" height="33"></rect>
+	<path class="st1" d="M583.1,285.4c-12.7,10.2-31.1-3.8-43.4,7.4c-16.6,15.1-32.3,59.9-39.2,87.1c-19.6,77-15.8,159.9-14.4,242.4   c0.5,31,7.1,55.9,15,84.5c7.9,28.7,25.7,59.4,44.9,70.3c17.6,10,39.3,8.7,57.8,4.1c12.6-3.1,36.3-11.8,48-19.3   c13.9-8.8,21.7-24.2,32.9-39.4c18.6-25.2,18.2-48.8,26.5-84.3c7.8-33.1,8.3-69.1,7.1-104.2c-1.5-47.2-5.9-94.7-17.4-138.6   s-30.7-84.3-57.2-109.6c-10.7-10.2-23.4-18-35.8-14.2C597.9,274.9,585,285.8,583.1,285.4z"></path>
+	<path class="st2" d="M560.7,236.3c-1,14.3,0.8,28.8,5,42.2c1.5,4.8,3.4,9.6,6.4,13.3c3.5,4.3,8.2,6.7,13,8.3   c16.5,5.2,35.1-0.8,47.3-15.3c12.2-14.5,17.5-36.9,13.6-57c-12,7.2-23.6,15.3-34.7,24.3c-1.5-15.4-3.8-32.8-14.4-41.6   c-2,14.6-6.1,28.7-12.1,41.5C578.9,243.3,570.3,237.4,560.7,236.3z"></path>
+	<path class="st3" d="M572.1,260.9c-1.1,14.5,9.8,28.9,23.9,31.8c4,0.8,8.2,0.8,12.1-0.5c5.5-1.9,9.9-6.2,14-10.4   c6.2-6.3,12.7-13.3,13.6-22.1c-7.2,4.6-14.6,9-22.1,13.1c-1.2,0.7-2.8,1.3-3.8,0.4c-0.5-0.4-0.7-1.1-0.9-1.7   c-2.5-7.8-5-15.6-7.6-23.5c-2.8,7.5-5.8,15.2-11.5,20.8c-0.8,0.7-1.7,1.5-2.7,1.3c-0.7-0.1-1.3-0.6-1.8-1.1   C582.4,266.4,579.6,263.6,572.1,260.9z"></path>
+	<path class="st4" d="M589.1,376.2c-6.4-2.9-12.9-5.8-20-7.4s-15.2-1.9-22,0.3"></path>
+	<path class="st4" d="M608.6,376.2c6.4-2.9,12.9-5.8,20-7.4s15.2-1.9,22,0.3"></path>
+	<circle class="st4" cx="576.4" cy="395.1" r="8.2"></circle>
+	<circle class="st4" cx="621.4" cy="395.1" r="8.2"></circle>
+	<path class="st4" d="M618.4,437.6c-14.3-0.2-27.8,0.5-42-0.5c0.1,1.8,1.7,2.3,2.9,4.1c0.3,0.5,3.7,1.5,4.4,1.8   c1.1,0.5,3.4,0.7,4.8,0.8c7.9,0.5,13.7,0.3,20-0.5C614.8,442.4,614.4,440.3,618.4,437.6z"></path>
+	<ellipse class="st1" cx="534.2" cy="1105.3" rx="42.2" ry="25"></ellipse>
+	<ellipse class="st1" cx="670.8" cy="1105.3" rx="41.9" ry="25"></ellipse>
+	<path class="st1" d="M209.8,511.2c12.3,0.5,19-0.7,29.8,3.9s18.8,14.6,15,23.6c-1.5,3.7-4.8,6.8-8.6,9.3   c-13.1,8.6-31.5,10.2-48.7,11c-7.4,0.4-15.1,0.6-21.9-1.6c-1.9-0.6-4-1.8-3.8-3.4c0.2-1.8,3.1-2.6,5.5-2.8c7.6-0.5,18-2,25.9-2.3   c-15.9-0.6-17.5,0.8-28.3-0.7c-2.2-0.3-8.2-1.8-7.9-3.5c0.4-1.8,3.5-1.9,5.9-2.3c7.7-1.2,20.1-2.6,27.6-2.6   c-6.1-1-18.4-0.6-24.6-1.6c-3.2-0.5-5.1-0.6-8.1-1.5c-2.4-0.7-7.1-2.1-5.8-4.4c1.5-2.8,9.6-3.1,13.5-3.1c7.2,0,20.1-0.5,26.9,1.4   c-8.6-1.5-23.2-4.4-31.5-6.6c-3.1-0.8-6.8-2.6-5.9-5c0.7-1.8,3.5-2.4,5.9-2.6c10.6-0.9,21.5,0.4,31.3,3.6   c-7.9-4.3-19.2-6.4-20.8-13.8c-0.2-0.7,0.7-2.3,1.3-2.9c0.9-0.8,6.4,0.4,7.7,0.8C197.2,506.2,203.2,509.5,209.8,511.2z"></path>
+	<path class="st1" d="M997.1,511.2c-12.3,0.5-19-0.7-29.8,3.9c-10.8,4.6-18.8,14.6-15,23.6c1.5,3.7,4.8,6.8,8.6,9.3   c13.1,8.6,31.5,10.2,48.7,11c7.4,0.4,15.1,0.6,21.9-1.6c1.9-0.6,4-1.8,3.8-3.4c-0.2-1.8-3.1-2.6-5.5-2.8c-7.6-0.5-18-2-25.9-2.3   c15.9-0.6,17.5,0.8,28.3-0.7c2.2-0.3,8.2-1.8,7.9-3.5c-0.4-1.8-3.5-1.9-5.9-2.3c-7.7-1.2-20.1-2.6-27.6-2.6   c6.1-1,18.4-0.6,24.6-1.6c3.2-0.5,5.1-0.6,8.1-1.5c2.4-0.7,7.1-2.1,5.8-4.4c-1.5-2.8-9.6-3.1-13.5-3.1c-7.2,0-20.1-0.5-26.9,1.4   c8.6-1.5,23.2-4.4,31.5-6.6c3.1-0.8,6.8-2.6,5.9-5c-0.7-1.8-3.5-2.4-5.9-2.6c-10.6-0.9-21.5,0.4-31.3,3.6   c7.9-4.3,19.2-6.4,20.8-13.8c0.2-0.7-0.7-2.3-1.3-2.9c-0.9-0.8-6.4,0.4-7.7,0.8C1009.7,506.2,1003.6,509.5,997.1,511.2z"></path>
+</g>
+<g id="skeleton_1_--inject-1" class="st5">
+	<polygon class="st6" points="493,529.5 543.3,745.3 659.7,744.5 705.9,529.5  "></polygon>
+	<polyline class="st6" points="492,529.5 389.3,529.5 226,535.8  "></polyline>
+	<polyline class="st6" points="707.4,529.1 810.6,529.1 973.9,535.5  "></polyline>
+	<polyline class="st6" points="543.3,745.3 549.7,905.5 549.7,1113.5  "></polyline>
+	<polyline class="st6" points="659.7,744.5 659.7,905.5 659.7,1113.5  "></polyline>
+	<polyline class="st6" points="598.7,350 578.9,352.5 566.4,362 557.8,376.1 555.3,385.4 554.5,397.1 554.5,406.6 555.3,428.3    562.1,448.3 573.7,460.8 583.7,467.5 598.7,470.7 613.5,467.9 623.5,461.2 635.1,448.6 641.9,428.6 642.7,407 642.7,397.4    641.9,385.7 639.4,376.5 631.2,362 618.6,352.5 598.7,350  "></polyline>
+	<polyline class="st6" points="562.7,386.9 566.7,383.2 572.9,382.2 580.2,382.2 590,386.2  "></polyline>
+	<polygon class="st6" points="568.9,395.1 574.1,391.4 580.4,391.4 585.6,395.6 580.4,396.6 574.1,397.4  "></polygon>
+	<polyline class="st6" points="587.2,413.2 592.4,413.2 597.9,414 597.9,408.7 597.9,401.6 597.9,396.1 597.9,390.3  "></polyline>
+	<polyline class="st6" points="634.2,386.5 630.2,383.6 623.9,382.1 616.6,382.5 606.6,385.7  "></polyline>
+	<polygon class="st6" points="628.3,395.1 623,391.4 616.7,391.4 611.6,395.6 616.7,396.6 623,397.4  "></polygon>
+	<polyline class="st6" points="608.3,413.2 603.3,413.2 597.9,414  "></polyline>
+	<polygon class="st6" points="581.2,435.3 588.1,431.9 594.6,430.8 598.7,431.7 602.9,430.8 609.3,431.9 616.2,435.3 609.8,441.6    602.7,444.4 598.7,444.9 594.6,444.4 587.6,441.6  "></polygon>
+	<polyline class="st6" points="581.2,435.3 584.8,435.6 594.8,434.8 598.7,435.3 602.7,434.8 612.6,435.6 616.2,435.3  "></polyline>
+	<polyline class="st6" points="581.2,435.3 584.8,435.6 594.8,437.7 598.7,438.5 602.7,437.7 612.6,435.6 616.2,435.3  "></polyline>
+	<circle id="rightShoulder--inject-1" class="st7" cx="493.1" cy="529.2" r="8.2"></circle>
+	<circle id="rightElbow--inject-1" class="st7" cx="389.6" cy="529.3" r="8.2"></circle>
+	<circle id="rightWrist--inject-1" class="st7" cx="226.2" cy="535.7" r="8.2"></circle>
+	<circle id="rightHip--inject-1" class="st7" cx="543.4" cy="745" r="8.2"></circle>
+	<circle id="rightKnee--inject-1" class="st7" cx="549.8" cy="905.2" r="8.2"></circle>
+	<circle id="rightAnkle--inject-1" class="st7" cx="549.8" cy="1113.2" r="8.2"></circle>
+	<circle id="leftElbow--inject-1" class="st7" cx="810.4" cy="528.9" r="8.2"></circle>
+	<circle id="leftWrist--inject-1" class="st7" cx="973.8" cy="535.2" r="8.2"></circle>
+	<circle id="leftHip--inject-1" class="st7" cx="659.8" cy="744.2" r="8.2"></circle>
+	<circle id="leftKnee--inject-1" class="st7" cx="659.8" cy="905.2" r="8.2"></circle>
+	<circle id="leftAnkle--inject-1" class="st7" cx="659.8" cy="1113.2" r="8.2"></circle>
+	<circle id="rightEye0--inject-1" class="st7" cx="568.9" cy="395.1" r="0.8"></circle>
+	<circle id="rightBrow1--inject-1" class="st7" cx="566.7" cy="383.2" r="0.8"></circle>
+	<circle id="rightBrow4--inject-1" class="st7" cx="590" cy="386.2" r="0.8"></circle>
+	<circle id="nose1--inject-1" class="st7" cx="597.9" cy="396.1" r="0.8"></circle>
+	<circle id="rightBrow3--inject-1" class="st7" cx="580.2" cy="382.2" r="0.8"></circle>
+	<circle id="rightEye1--inject-1" class="st7" cx="574.1" cy="391.4" r="0.8"></circle>
+	<circle id="rightBrow0--inject-1" class="st7" cx="562.7" cy="386.9" r="0.8"></circle>
+	<circle id="rightBrow2--inject-1" class="st7" cx="572.9" cy="382.2" r="0.8"></circle>
+	<circle id="rightEye5--inject-1" class="st7" cx="574.1" cy="397.4" r="0.8"></circle>
+	<circle id="rightEye2--inject-1" class="st7" cx="580.4" cy="391.4" r="0.8"></circle>
+	<circle id="rightEye3--inject-1" class="st7" cx="585.6" cy="395.6" r="0.8"></circle>
+	<circle id="nose0--inject-1" class="st7" cx="597.9" cy="390.3" r="0.8"></circle>
+	<circle id="nose3--inject-1" class="st7" cx="597.9" cy="408.7" r="0.8"></circle>
+	<circle id="rightNose0--inject-1" class="st7" cx="587.2" cy="413.2" r="0.8"></circle>
+	<circle id="rightMouthCorner--inject-1" class="st7" cx="581.2" cy="435.3" r="0.8"></circle>
+	<circle id="rightNose1--inject-1" class="st7" cx="592.4" cy="413.2" r="0.8"></circle>
+	<circle id="rightUpperLipTop0--inject-1" class="st7" cx="588.1" cy="431.9" r="0.8"></circle>
+	<circle id="nose2--inject-1" class="st7" cx="597.9" cy="401.6" r="0.8"></circle>
+	<circle id="nose4--inject-1" class="st7" cx="597.9" cy="414" r="0.8"></circle>
+	<circle id="upperLipTopMid--inject-1" class="st7" cx="598.7" cy="431.7" r="0.8"></circle>
+	<circle id="rightUpperLipTop1--inject-1" class="st7" cx="594.6" cy="430.8" r="0.8"></circle>
+	<path id="rightMiddleLip--inject-1" class="st7" d="M584.8,434.8c0.4,0,0.8,0.4,0.8,0.8s-0.4,0.8-0.8,0.8s-0.8-0.4-0.8-0.8   C584,435.2,584.4,434.8,584.8,434.8z"></path>
+	<circle id="lowerLipBottomMid--inject-1" class="st7" cx="598.7" cy="444.9" r="0.8"></circle>
+	<circle id="upperLipBottomMid--inject-1" class="st7" cx="598.7" cy="435.3" r="0.8"></circle>
+	<circle id="lowerLipTopMid--inject-1" class="st7" cx="598.7" cy="438.4" r="0.8"></circle>
+	<circle id="rightUpperLipBottom1--inject-1" class="st7" cx="594.8" cy="434.8" r="0.8"></circle>
+	<circle id="rightLowerLipTop0--inject-1" class="st7" cx="594.8" cy="437.7" r="0.8"></circle>
+	<circle id="rightLowerLipBottom1--inject-1" class="st7" cx="594.6" cy="444.4" r="0.8"></circle>
+	<circle id="rightLowerLipBottom0--inject-1" class="st7" cx="587.6" cy="441.6" r="0.8"></circle>
+	<circle id="rightEye4--inject-1" class="st7" cx="580.4" cy="396.6" r="0.8"></circle>
+	<circle id="jawMid--inject-1" class="st7" cx="598.7" cy="470.7" r="0.8"></circle>
+	<circle id="rightJaw7--inject-1" class="st7" cx="583.7" cy="467.5" r="0.8"></circle>
+	<circle id="rightJaw6--inject-1" class="st7" cx="573.7" cy="460.8" r="0.8"></circle>
+	<circle id="rightJaw5--inject-1" class="st7" cx="562.1" cy="448.3" r="0.8"></circle>
+	<circle id="rightJaw4--inject-1" class="st7" cx="555.3" cy="428.3" r="0.8"></circle>
+	<circle id="rightJaw3--inject-1" class="st7" cx="554.5" cy="406.6" r="0.8"></circle>
+	<circle id="rightJaw2--inject-1" class="st7" cx="554.5" cy="397.1" r="0.8"></circle>
+	<circle id="rightJaw1--inject-1" class="st7" cx="555.3" cy="385.4" r="0.8"></circle>
+	<circle id="rightJaw0--inject-1" class="st7" cx="557.8" cy="376.1" r="0.8"></circle>
+	<circle id="topMid--inject-1" class="st7" cx="598.9" cy="350" r="0.8"></circle>
+	<circle id="leftTop0--inject-1" class="st7" cx="618.6" cy="352.5" r="0.8"></circle>
+	<circle id="leftTop1--inject-1" class="st7" cx="631.2" cy="362" r="0.8"></circle>
+	<circle id="leftEye0--inject-1" class="st7" cx="628.5" cy="395.1" r="0.8"></circle>
+	<circle id="leftBrow1--inject-1" class="st7" cx="630.4" cy="383.6" r="0.8"></circle>
+	<circle id="leftBrow4--inject-1" class="st7" cx="606.8" cy="385.7" r="0.8"></circle>
+	<circle id="leftBrow3--inject-1" class="st7" cx="616.8" cy="382.5" r="0.8"></circle>
+	<circle id="leftEye1--inject-1" class="st7" cx="623.3" cy="391.4" r="0.8"></circle>
+	<circle id="leftBrow0--inject-1" class="st7" cx="634.4" cy="386.5" r="0.8"></circle>
+	<circle id="leftBrow2--inject-1" class="st7" cx="624.1" cy="382.1" r="0.8"></circle>
+	<circle id="leftEye5--inject-1" class="st7" cx="623.3" cy="397.4" r="0.8"></circle>
+	<circle id="leftEye2--inject-1" class="st7" cx="617" cy="391.4" r="0.8"></circle>
+	<circle id="leftEye3--inject-1" class="st7" cx="611.8" cy="395.6" r="0.8"></circle>
+	<circle id="leftNose0--inject-1" class="st7" cx="608.3" cy="413.2" r="0.8"></circle>
+	<circle id="leftMouthCorner--inject-1" class="st7" cx="616.2" cy="435.3" r="0.8"></circle>
+	<circle id="leftNose1--inject-1" class="st7" cx="603.5" cy="413.2" r="0.8"></circle>
+	<circle id="leftUpperLipTop0--inject-1" class="st7" cx="609.3" cy="431.9" r="0.8"></circle>
+	<circle id="leftUpperLipTop1--inject-1" class="st7" cx="602.9" cy="430.8" r="0.8"></circle>
+	<path id="leftMiddleLip--inject-1" class="st7" d="M612.6,434.8c0.4,0,0.8,0.4,0.8,0.8s-0.4,0.8-0.8,0.8s-0.8-0.4-0.8-0.8   C611.8,435.2,612.2,434.8,612.6,434.8z"></path>
+	<circle id="leftUpperLipBottom1--inject-1" class="st7" cx="602.7" cy="434.8" r="0.8"></circle>
+	<circle id="leftLowerLipTop0--inject-1" class="st7" cx="602.7" cy="437.7" r="0.8"></circle>
+	<circle id="leftLowerLipBottom1--inject-1" class="st7" cx="602.9" cy="444.4" r="0.8"></circle>
+	<circle id="leftLowerLipBottom0--inject-1" class="st7" cx="609.8" cy="441.6" r="0.8"></circle>
+	<circle id="leftEye4--inject-1" class="st7" cx="617" cy="396.6" r="0.8"></circle>
+	<circle id="leftJaw7--inject-1" class="st7" cx="613.5" cy="467.9" r="0.8"></circle>
+	<circle id="leftJaw6--inject-1" class="st7" cx="623.5" cy="461.2" r="0.8"></circle>
+	<circle id="leftJaw5--inject-1" class="st7" cx="635.1" cy="448.6" r="0.8"></circle>
+	<circle id="leftJaw4--inject-1" class="st7" cx="641.9" cy="428.6" r="0.8"></circle>
+	<circle id="leftJaw3--inject-1" class="st7" cx="642.7" cy="407" r="0.8"></circle>
+	<circle id="leftJaw2--inject-1" class="st7" cx="642.7" cy="397.4" r="0.8"></circle>
+	<circle id="leftJaw1--inject-1" class="st7" cx="641.9" cy="385.7" r="0.8"></circle>
+	<circle id="leftJaw0--inject-1" class="st7" cx="639.4" cy="376.5" r="0.8"></circle>
+	<circle id="rightTop0--inject-1" class="st7" cx="579" cy="352.5" r="0.8"></circle>
+	<circle id="rightTop1--inject-1" class="st7" cx="566.4" cy="362" r="0.8"></circle>
+	<circle id="leftShoulder--inject-1" class="st7" cx="706" cy="529.2" r="8.2"></circle>
+</g>
+</svg></g>
+
+                <g id="skeleton_1_">
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="624.5,170 604.7,172.5 592.2,182 583.6,196.1 
+                        581.1,205.4 580.3,217.1 580.3,226.6 581.1,248.3 587.9,268.3 599.5,280.8 609.5,287.5 624.5,290.7 639.3,287.9 649.3,281.2 
+                        660.9,268.6 667.7,248.6 668.5,227 668.5,217.4 667.7,205.7 665.2,196.5 657,182 644.4,172.5 624.5,170 	"></polyline>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="588.5,206.9 592.5,203.2 598.7,202.2 606,202.2 
+                        615.8,206.2 	"></polyline>
+                    <polygon style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="594.7,215.1 599.9,211.4 606.2,211.4 611.4,215.6 
+                        606.2,216.6 599.9,217.4 	"></polygon>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="613,233.2 618.2,233.2 623.7,234 623.7,228.7 
+                        623.7,221.6 623.7,216.1 623.7,210.3 	"></polyline>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="660,206.5 656,203.6 649.7,202.1 642.4,202.5 
+                        632.4,205.7 	"></polyline>
+                    <polygon style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="654.1,215.1 648.8,211.4 642.5,211.4 637.4,215.6 
+                        642.5,216.6 648.8,217.4 	"></polygon>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="634.1,233.2 629.1,233.2 623.7,234 	"></polyline>
+                    <polygon style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="607,255.3 613.9,251.9 620.4,250.8 624.5,251.7 
+                        628.7,250.8 635.1,251.9 642,255.3 635.6,261.6 628.5,264.4 624.5,264.9 620.4,264.4 613.4,261.6 	"></polygon>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="607,255.3 610.6,255.6 620.6,254.8 624.5,255.3 
+                        628.5,254.8 638.4,255.6 642,255.3 	"></polyline>
+                    <polyline style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="607,255.3 610.6,255.6 620.6,257.7 624.5,258.5 
+                        628.5,257.7 638.4,255.6 642,255.3 	"></polyline>
+                    <circle class="draggable" id="rightShoulder" cx="480.5" cy="523.2" r="8.2"><title>rightShoulder</title></circle>
+                    <circle class="draggable" id="rightElbow" cx="342.2" cy="524.5" r="8.2"><title>rightElbow</title></circle>
+                    <circle class="draggable" id="rightWrist" cx="248.4" cy="541.7" r="8.2"><title>rightWrist</title></circle>
+                    <circle class="draggable" id="rightHip" cx="552.4" cy="779.8" r="8.2"><title>rightHip</title></circle>
+                    <circle class="draggable" id="rightKnee" cx="556.4" cy="955.6" r="8.2"><title>rightKnee</title></circle>
+                    <circle class="draggable" id="rightAnkle" cx="548" cy="1094" r="8.2"><title>rightAnkle</title></circle>
+                    <circle class="draggable" id="leftElbow" cx="842.2" cy="530.0999999999999" r="8.2"><title>leftElbow</title></circle>
+                    <circle class="draggable" id="leftWrist" cx="960" cy="535.2" r="8.2"><title>leftWrist</title></circle>
+                    <circle class="draggable" id="leftHip" cx="652" cy="779" r="8.2"><title>leftHip</title></circle>
+                    <circle class="draggable" id="leftKnee" cx="660.4" cy="965.2" r="8.2"><title>leftKnee</title></circle>
+                    <circle class="draggable" id="leftAnkle" cx="661.6" cy="1100" r="8.2"><title>leftAnkle</title></circle>
+                    <circle class="draggable" id="leftShoulder" cx="717.4" cy="535.2" r="8.2"><title>leftShoulder</title></circle>
+                    <circle id="rightEye0" cx="594.7" cy="215.1" r="0.8"></circle>
+                    <circle id="rightBrow1" cx="592.5" cy="203.2" r="0.8"></circle>
+                    <circle id="rightBrow4" cx="615.8" cy="206.2" r="0.8"></circle>
+                    <circle id="nose1" cx="623.7" cy="216.1" r="0.8"></circle>
+                    <circle id="rightBrow3" cx="606" cy="202.2" r="0.8"></circle>
+                    <circle id="rightEye1" cx="599.9" cy="211.4" r="0.8"></circle>
+                    <circle id="rightBrow0" cx="588.5" cy="206.9" r="0.8"></circle>
+                    <circle id="rightBrow2" cx="598.7" cy="202.2" r="0.8"></circle>
+                    <circle id="rightEye5" cx="599.9" cy="217.4" r="0.8"></circle>
+                    <circle id="rightEye2" cx="606.2" cy="211.4" r="0.8"></circle>
+                    <circle id="rightEye3" cx="611.4" cy="215.6" r="0.8"></circle>
+                    <circle id="nose0" cx="623.7" cy="210.3" r="0.8"></circle>
+                    <circle id="nose3" cx="623.7" cy="228.7" r="0.8"></circle>
+                    <circle id="rightNose0" cx="613" cy="233.2" r="0.8"></circle>
+                    <circle id="rightMouthCorner" cx="607" cy="255.3" r="0.8"></circle>
+                    <circle id="rightNose1" cx="618.2" cy="233.2" r="0.8"></circle>
+                    <circle id="rightUpperLipTop0" cx="613.9" cy="251.9" r="0.8"></circle>
+                    <circle id="nose2" cx="623.7" cy="221.6" r="0.8"></circle>
+                    <circle id="nose4" cx="623.7" cy="234" r="0.8"></circle>
+                    <circle id="upperLipTopMid" cx="624.5" cy="251.7" r="0.8"></circle>
+                    <circle id="rightUpperLipTop1" cx="620.4" cy="250.8" r="0.8"></circle>
+                    <path id="rightMiddleLip" d="M610.6,254.8c0.4,0,0.8,0.4,0.8,0.8c0,0.4-0.4,0.8-0.8,0.8s-0.8-0.4-0.8-0.8S610.2,254.8,610.6,254.8z"></path>
+                    <circle id="lowerLipBottomMid" cx="624.5" cy="264.9" r="0.8"></circle>
+                    <circle id="upperLipBottomMid" cx="624.5" cy="255.3" r="0.8"></circle>
+                    <circle id="lowerLipTopMid" cx="624.5" cy="258.4" r="0.8"></circle>
+                    <circle id="rightUpperLipBottom1" cx="620.6" cy="254.8" r="0.8"></circle>
+                    <circle id="rightLowerLipTop0" cx="620.6" cy="257.7" r="0.8"></circle>
+                    <circle id="rightLowerLipBottom1" cx="620.4" cy="264.4" r="0.8"></circle>
+                    <circle id="rightLowerLipBottom0" cx="613.4" cy="261.6" r="0.8"></circle>
+                    <circle id="rightEye4" cx="606.2" cy="216.6" r="0.8"></circle>
+                    <circle id="jawMid" cx="624.5" cy="290.7" r="0.8"></circle>
+                    <circle id="rightJaw7" cx="609.5" cy="287.5" r="0.8"></circle>
+                    <circle id="rightJaw6" cx="599.5" cy="280.8" r="0.8"></circle>
+                    <circle id="rightJaw5" cx="587.9" cy="268.3" r="0.8"></circle>
+                    <circle id="rightJaw4" cx="581.1" cy="248.3" r="0.8"></circle>
+                    <circle id="rightJaw3" cx="580.3" cy="226.6" r="0.8"></circle>
+                    <circle id="rightJaw2" cx="580.3" cy="217.1" r="0.8"></circle>
+                    <circle id="rightJaw1" cx="581.1" cy="205.4" r="0.8"></circle>
+                    <circle id="rightJaw0" cx="583.6" cy="196.1" r="0.8"></circle>
+                    <circle id="topMid" cx="624.7" cy="170" r="0.8"></circle>
+                    <circle id="leftTop0" cx="644.4" cy="172.5" r="0.8"></circle>
+                    <circle id="leftTop1" cx="657" cy="182" r="0.8"></circle>
+                    <circle id="leftEye0" cx="654.3" cy="215.1" r="0.8"></circle>
+                    <circle id="leftBrow1" cx="656.2" cy="203.6" r="0.8"></circle>
+                    <circle id="leftBrow4" cx="632.6" cy="205.7" r="0.8"></circle>
+                    <circle id="leftBrow3" cx="642.6" cy="202.5" r="0.8"></circle>
+                    <circle id="leftEye1" cx="649.1" cy="211.4" r="0.8"></circle>
+                    <circle id="leftBrow0" cx="660.2" cy="206.5" r="0.8"></circle>
+                    <circle id="leftBrow2" cx="649.9" cy="202.1" r="0.8"></circle>
+                    <circle id="leftEye5" cx="649.1" cy="217.4" r="0.8"></circle>
+                    <circle id="leftEye2" cx="642.8" cy="211.4" r="0.8"></circle>
+                    <circle id="leftEye3" cx="637.6" cy="215.6" r="0.8"></circle>
+                    <circle id="leftNose0" cx="634.1" cy="233.2" r="0.8"></circle>
+                    <circle id="leftMouthCorner" cx="642" cy="255.3" r="0.8"></circle>
+                    <circle id="leftNose1" cx="629.3" cy="233.2" r="0.8"></circle>
+                    <circle id="leftUpperLipTop0" cx="635.1" cy="251.9" r="0.8"></circle>
+                    <circle id="leftUpperLipTop1" cx="628.7" cy="250.8" r="0.8"></circle>
+                    <path id="leftMiddleLip" d="M638.4,254.8c0.4,0,0.8,0.4,0.8,0.8c0,0.4-0.4,0.8-0.8,0.8s-0.8-0.4-0.8-0.8S638,254.8,638.4,254.8z"></path>
+                    <circle id="leftUpperLipBottom1" cx="628.5" cy="254.8" r="0.8"></circle>
+                    <circle id="leftLowerLipTop0" cx="628.5" cy="257.7" r="0.8"></circle>
+                    <circle id="leftLowerLipBottom1" cx="628.7" cy="264.4" r="0.8"></circle>
+                    <circle id="leftLowerLipBottom0" cx="635.6" cy="261.6" r="0.8"></circle>
+                    <circle id="leftEye4" cx="642.8" cy="216.6" r="0.8"></circle>
+                    <circle id="leftJaw7" cx="639.3" cy="287.9" r="0.8"></circle>
+                    <circle id="leftJaw6" cx="649.3" cy="281.2" r="0.8"></circle>
+                    <circle id="leftJaw5" cx="660.9" cy="268.6" r="0.8"></circle>
+                    <circle id="leftJaw4" cx="667.7" cy="248.6" r="0.8"></circle>
+                    <circle id="leftJaw3" cx="668.5" cy="227" r="0.8"></circle>
+                    <circle id="leftJaw2" cx="668.5" cy="217.4" r="0.8"></circle>
+                    <circle id="leftJaw1" cx="667.7" cy="205.7" r="0.8"></circle>
+                    <circle id="leftJaw0" cx="665.2" cy="196.5" r="0.8"></circle>
+                    <circle id="rightTop0" cx="604.8" cy="172.5" r="0.8"></circle>
+                    <circle id="rightTop1" cx="592.2" cy="182" r="0.8"></circle>
+                </g>
+                </svg>

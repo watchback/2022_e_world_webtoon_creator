@@ -1,0 +1,214 @@
+/*여기는 CSS 관련 코드 내용임*/
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Sans Mono', monospace;
+  list-style:none;
+  margin:0px;
+  padding:0px;
+  color:#000;
+  text-decoration: none;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0; /*쓸 데 없는 공백 제거*/
+  padding: 0; /*쓸 데 없는 공백 제거*/
+  background-color: dimgrey;
+  list-style-type: none; /*목록 기호 제거*/
+  border-radius: 15px;
+}
+
+.nav-item {
+  padding: 15px;
+  color: white;
+}
+.nav-item a { /*nav-item 클래스 아래의 a 요소를 선택함*/
+  cursor: pointer; /*마우스 커서를 pointer 모양으로 함*/
+  text-align: center;
+  text-decoration: none; /*밑줄 없앰*/
+  color: white;
+}
+/*
+#Layer_1 {
+  background-image: url('resources\illustration\firepotato.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+*/
+.header{
+  display: flex;
+  width: 1500px;
+  height: 70px;
+  margin: auto;
+  margin-top: 15px;
+}
+.teamname{
+  width:500px;
+  font-size: 40px;
+}
+.nav{
+  display: flex;
+  justify-content: flex-end;
+  width:1200px;
+  margin-right: 10px;
+}
+.nav > li{
+  margin-left:84px;
+}
+.main_text{
+  width: 100%;
+  height: 561px;
+  background: #f1f2f3;
+  margin-top: 50px;
+  display: flex;
+}
+.headline{
+  font-size: 35px;
+  font-weight: bold;}
+.text_board{
+  margin-left: 7%;
+  margin-right: 30%;
+  padding: 70px 30px 70px 30px;
+  height: 360px;
+}
+#text{
+  margin-top: 10%;
+}
+img {
+  margin: auto;
+  margin-right: 150px;
+}   
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  transition: 0.3s;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.static {
+  cursor: not-allowed;
+}
+.draggable {
+  cursor: move;
+}
+.canvas-container {
+width: 800px;
+max-width: 100%;
+display: flex;
+justify-content: center;
+position: relative;
+}
+.camera-canvas {
+  position: absolute;
+  transform: scale(0.5, 0.5);
+  transform-origin: 0 0;
+  left: 10px;
+  top: 10px;
+}
+#main {
+  left: 0;
+  top: 0;
+  position: static;
+}
+
+.illustration-canvas {
+    border: 1px solid #eeeeee;
+}
+  
+  
+@media only screen and (max-width: 600px) {
+
+    .footer-text,
+    .dg {
+        display: none;
+    }
+}
+
+/*
+ *  The following loading spinner CSS is from SpinKit project
+ *  https://github.com/tobiasahlin/SpinKit
+ */
+.sk-spinner-pulse {
+    width: 20px;
+    height: 20px;
+    margin: auto 10px;
+    float: left;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
+    animation: sk-pulseScaleOut 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-pulseScaleOut {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-pulseScaleOut {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+.spinner-text {
+    float: left;
+}
+
+/*mapping.html css임*/
+#image-show {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+
+}

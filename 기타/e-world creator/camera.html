@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PoseNet - Camera Feed Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .nav-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: 0; /*쓸 데 없는 공백 제거*/
+            padding: 0; /*쓸 데 없는 공백 제거*/
+            background-color: dimgrey;
+            list-style-type: none; /*목록 기호 제거*/
+            border-radius: 15px;
+        }
+    
+        .nav-item {
+            padding: 15px;
+            color: white;
+        }
+        .nav-item a { /*nav-item 클래스 아래의 a 요소를 선택함*/
+            cursor: pointer; /*마우스 커서를 pointer 모양으로 함*/
+            text-align: center;
+            text-decoration: none; /*밑줄 없앰*/
+            color: white;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+
+</head>
+
+<body>
+    <div id="info" style='display:none'>
+    </div>
+    <div id="loading" style='position: relative; left: 0'>
+        <span class="spinner-text" id="status">
+            Loading PoseNet model...
+        </span>
+        <div class="sk-spinner sk-spinner-pulse"></div>
+    </div>
+    <div class="canvas-container">
+        <div id='main' style='display:none'>
+            <video id="video" playsinline style=" -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            display: none;
+            ">
+            </video>
+            <canvas id="output" class="camera-canvas"></canvas>
+            <canvas id="keypoints" class="camera-canvas"></canvas>
+        </div>
+        <canvas id="capture" class="illustration-canvas"></cavnas>
+    </div>
+    <script src="camera.js"></script>
+    <button type="button" class="btnScreenShot" id="btnScreenShot">스크린샷</button>
+    <nav>
+        <ul class="nav-container">
+            <li class="nav-item"> <a href="index.html">Introduce</a> </li>
+            <li class="nav-item"> ------> </li>
+            <li class="nav-item"> <a href="CSVG.html">Convert to SVG</a> </li>
+            <li class="nav-item"> ------> </li>
+            <li class="nav-item"> <a href="Mapping.html">Mapping</a> </li>
+            <li class="nav-item"> ------> </li>
+            <li class="nav-item"> <a href="camera.html">(Animate!)</a> </li>
+        </ul>
+    </nav>
+    
+    <script>//캡처 기능 추가
+        $("#btnScreenShot").on("click", function() {
+            setTimeout(function(){
+                html2canvas(document.querySelector("#capture")).then(function(canvas) {
+                if (canvas.msToBlob) { //for IE 10, 11
+                    var blob = canvas.msToBlob();
+                    window.navigator.msSaveBlob(blob, "capture.png");
+                } else {
+                    saveAs(canvas.toDataURL(), "capture.png");
+                }
+            });
+            },3000)
+
+            
+        
+            function saveAs(uri, filename) {
+                var link = document.createElement('a');
+                if (typeof link.download === 'string') {
+                    link.href = uri;
+                    link.download = filename;
+                    //Firefox requires the link to be in the body
+                    document.body.appendChild(link);
+                    //simulate click
+                    link.click();
+                    //remove the link when done
+                    document.body.removeChild(link);
+                } else {
+                    window.open(uri);
+                }
+            }
+        });
+        </script>
+</body>
+
+</html>

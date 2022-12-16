@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PoseNet - Coco Images Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="loading">
+      <span id="status"></span>
+      <span class="sk-spinner sk-spinner-pulse"></span>
+    </div>
+    <div id='main'>
+      <div id='results' style='display:none'>
+        <div id="multi">
+          <h4>Pose Animator - Static Image Demo</h4>
+          <video id="video" playsinline style=" -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            display: none;
+            ">
+          </video>
+          <canvas class="detection-canvas"></canvas>
+          <canvas class="illustration-canvas"></cavnas>
+        </div>
+      </div>
+    </div>
+    <script src="static_image.js"></script>
+</body>
+
+</html>
