@@ -310,6 +310,38 @@ file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 
 
 # 5. Gene expression level quantification
 ## 5-1. Read alignment & Abundance estimation
+이제 NRCDS_Trinity.fasta 에 reads 를 mapping 할 차례이다. 이는 Trinity 의 util 내의 align_and_estimate_abundance.pl script를 사용  
+여기서의 reads는 concatenation된 reads가 아닌, 각각의 sample 의 reads  
+결과 파일에는 각 transcripts 의 read count, TPM, FPKM 정보가 담겨있음  
+
+File: **NRCDS_Trinity.fasta, rawdata_1.fastq, rawdata_2.fastq**  
+Tool: **Trinity util 내의 align_and_estimate_abundance.pl**  
+
+#### 커맨드
+
+    Trinity tool path/util/align_and_estimate_abundance.pl --transcripts NRCDS_Trinity.fasta --seqType fq --left rawdata_1.fastq --right  rawdata_2.fastq --est_method RSEM --aln_method bowtie2 --prep_reference --output_dir rawdata_rsem_out --output_prefix  rawdata_rsem --thread_count 8  
+
+#### 옵션
+--transcripts:  mapping 하고자 하는 assembly 파일 (NRCDS_Trinity.fasta)
+
+--seqType:  reads format 을 지정 (fq: fastq, fa: fasta)
+
+--left, right:  foward, reverse reads 를 지정
+
+--est_method:  abundance estimation 하는 method 설정 (RSEM을 사용한다.)
+
+--aln_method:  read alignment 하는 method 설정 (bowtie2를 사용한다.)
+
+--prep_reference:  assembly 파일을 indexing 하는 과정 (처음에 한 sample 돌릴때 했다면 다음 sample 부터는 빼도 됨)
+
+--output_dir: 생성될 output directory
+
+--output_prefix: 생성될 output 파일 앞에 붙는 이름
+
+--thread_count:  사용할 cpu 수  
+
+#### 결과
+**.RSEM.isoforms.results**  
 
 # 6. DEGs(Differentially expressed genes) analysis 
 ## 6-1. Gene expression matrix
