@@ -282,7 +282,7 @@ Tool: **CDHit**
 NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 sequence id 를 *de novo* assembly 파일인 Trinity.fasta 에 matching 하여 nucleotide sequence 를 얻는다.  
     
 커맨드 줄 해석  
-1) >가 있는 줄에서 첫번째 필드만 가져옴  
+1) ">" 가 있는 줄에서 첫번째 필드만 가져옴  
 2) .p 제거  
 3) .p 뒤에 있던 숫자 제거  
 4) 앞의 > 제거  
