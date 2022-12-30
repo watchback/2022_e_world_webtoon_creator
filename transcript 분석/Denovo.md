@@ -403,6 +403,8 @@ Tool: **Linux command**
 #### 결과
 **Trinity.trans_lengths.txt**  
 
+---
+
 ### 6-3-2. Normalization  
 RNA-seq normalization 방법중 하나인 TMM normalization 방법을 사용  
 
