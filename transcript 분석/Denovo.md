@@ -110,7 +110,6 @@ genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcript
 이때 comprehensive 한 transcriptome assembly 를 만들기 위해 여러 samples 의 RNA-seq data를 concatenation  
 forward끼리, reverse끼리 concat  
 
----
 
 File: **Forward Sequence.fastq, Reverse Sequence.fastq**  
 Tool: **Linux command**  
@@ -129,7 +128,6 @@ Trinity를 활용하여 assembly 진행
 완료되면 여러 파일들이 생성되는데 이때  Trinity.fasta 라는 파일이 assembly 된 transcriptome  
 이 과정 이후에 statistics 를 구하고 싶으면 Trinity tool 의 util directory 내의 TrinityStats.pl을 이용  
 
----
 
 File: **Merged_tissues_forward.fastq, Merged_tissues_reverse.fastq**  
 Tool: **Trinity**  
@@ -175,8 +173,7 @@ Tool: **TransDecoder**
 ## 4-2. Homology-based search
 
 기존에 잘알려진 protein database (Swissprot DB) 에 homology search 를 하여 gene prediction 과정에 활용  
-
----
+  
 
 ### 4-2-1. swissprot.fasta 파일을 download 후 blast db 형식으로 제작
 
@@ -313,9 +310,10 @@ file1.fasta <[ID.txt]> file2.fasta: 괄호 안의 ID파일과 일치하는 file 
 이제 NRCDS_Trinity.fasta 에 reads 를 mapping 할 차례이다. 이는 Trinity 의 util 내의 align_and_estimate_abundance.pl script를 사용  
 여기서의 reads는 concatenation된 reads가 아닌, 각각의 sample 의 reads  
 결과 파일에는 각 transcripts 의 read count, TPM, FPKM 정보가 담겨있음  
+각 sample 별로 분석을 진행  
 
 File: **NRCDS_Trinity.fasta, rawdata_1.fastq, rawdata_2.fastq**  
-Tool: **Trinity util 내의 align_and_estimate_abundance.pl**  
+Tool: **Trinity util 내의 util/align_and_estimate_abundance.pl**  
 
 #### 커맨드
 
@@ -343,11 +341,111 @@ Tool: **Trinity util 내의 align_and_estimate_abundance.pl**
 #### 결과
 **.RSEM.isoforms.results**  
 
-# 6. DEGs(Differentially expressed genes) analysis 
+# 6. DEGs(Differentially expressed genes) analysis  
+각 sample 간의 DEGs 를 확인하고자 진행한다.  
+
 ## 6-1. Gene expression matrix
-## 6-2. Differential expression analysis
+각 sample 로 부터 얻어진 RSEM.isoforms.results 를 하나의 matrix 로 합친다.  
+각 sample 의 RSEM.isoforms.results 를 나열  
+
+File: **rawdata1.RSEM.isoforms.results, rawdata2.RSEM.isoforms.results**  
+Tool: **Trinity 내의 util/abundance_estimates_to_matrix.pl**
+
+#### 커맨드
+
+    Trinity tool path/util/abundance_estimates_to_matrix.pl --est_method RSEM --out_prefix ABC  rawdata1.RSEM.isoforms.results rawdata2.RSEM.isoforms.results    
+
+#### 옵션
+--est_method:  abundance estimation 할때 썻던 method  
+
+--out_prefix: 생성될 output 파일 앞에 붙는 이름  
+
+#### 결과
+**(outprefix).counts.matrix를 포함한 여러 파일**  
+
+## 6-2. Differential expression analysis  
+각 sample의 발현값을 토대로 DE 분석을 진행한다.  
+여러 sample 인 경우에 모든 1:1 조합으로 비교하기 때문에 n combination 2 의 경우의 수가 나온다.  
+그러므로 많은 파일들이 생성됨  
+
+File: **(outprefix).counts.matrix**  
+Tool: **Trinity 내의 Analysis/DifferentialExpression/run_DE_analysis.pl**
+
+#### 커맨드
+
+    Trinity tool path/Analysis/DifferentialExpression/run_DE_analysis.pl  --matrix  counts.matrix  --method  edgeR  --output  edgeR_dir  --dispersion  0.1   
+
+#### 옵션
+--matrix:  앞서 얻었던 couts.matrix 파일  
+
+--method: DE 분석에 사용할 method (R package 인 edgeR)  
+
+--output:  output directory 이름  
+
+--dispersion:  같은 종의 sample 인 경우 0.1 을 사용 (edgeR manual 에 자세한 설명이 있으니 참고)  
+
+#### 결과
+**많은 파일**  
+
 ## 6-3. TMM normalization
+각 sample 에서 얻은 gene expression level 을 normalization 하는 과정  
+
 ### 6-3-1. trasncript length 정보 준비
-### 6-3-2. Normalization 
+1,3,4 번의 field (column) 만 추려내는 것으로 id, length, effective_length 정보를 준비한다.
+
+File: **rawdata1.RSEM.isoforms.results**  
+Tool: **Linux command**
+
+#### 커맨드
+
+    cut -f 1,3,4 A.RSEM.isoforms.results > Trinity.trans_lengths.txt    
+
+#### 결과
+**Trinity.trans_lengths.txt**  
+
+### 6-3-2. Normalization  
+RNA-seq normalization 방법중 하나인 TMM normalization 방법을 사용  
+
+File: **rawdata1.RSEM.isoforms.results**  
+Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
+
+#### 커맨드
+
+    Trinity tool path/Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl --matrix counts.matrix --length Trinity.trans_lengths.txt  
+
+#### 옵션
+--matrix:  앞서 얻었던 counts.matrix 파일  
+
+--length:  앞서 얻었던 Trinity.trans_lengths.txt 파일  
+
+#### 결과
+**.counts.matrix.TMM_normalized.FPKM**  
+
 ## 6-4. Identifying DEGs
+위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
+결과에는 위의 기준 (-C, -P) 에 충족하는 DEGs 들이 모여있음  
+log2.centered.dat가 붙은 파일들이 있는데 이는 절대적인 발현값이 아닌 상대적인 발현값으로 계산한 정보  
+
+File: **rawdata1.RSEM.isoforms.results**  
+Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
+
+#### 커맨드
+
+    Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.001    
+
+#### 옵션
+--matrix: 앞서 얻었던 couts.matrix.TMM_normalized.FPKM 파일
+
+-C: Log2 foldchange 로 2는 발현값이 4배 높거나 4배 낮은 기준 (DEGs cutoff)
+
+-P: 통계값  corrected p-value (FDR) 로 0.001 은  0.001 미만의 기준 (DEGs cutoff)
+
+#### 결과
+**diffExpr 의 prefix 가 붙은 파일** 
+
 # 7. Annotation
+얻어진 유전자들에 대해 기능이 잘 알려진 database 에 homology-based search 를 통해 유사한 기능을 할것이라고 추측  
+
+사용할 수 있는 database 는 근연종이 genome 이 있다면 해당 genome data  
+ 
+그렇지 않다면 swissprot, KEGG, UniRef 등에 BLAST 를 통해 해당 유전자들의 기능을 유추  
