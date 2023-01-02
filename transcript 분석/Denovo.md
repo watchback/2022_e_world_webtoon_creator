@@ -201,7 +201,7 @@ Tool: **Blast**
 
 #### 커맨드
 
-    ncbi-blast-2.x.x+/bin/blastp -query logest_orfs.pep -db swissprot.fasta -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 8 > blastp.outfmt6  
+    ncbi-blast-2.x.x+/bin/blastp -query longest_orfs.pep -db swissprot.fasta -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 8 > blastp.outfmt6  
 
 #### 옵션
 -query: db에 search 할 sequence 파일  
@@ -425,7 +425,9 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 
 ## 6-4. Identifying DEGs
 위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
+  
 결과에는 위의 기준 (-C, -P) 에 충족하는 DEGs 들이 모여있음  
+  
 log2.centered.dat가 붙은 파일들이 있는데 이는 절대적인 발현값이 아닌 상대적인 발현값으로 계산한 정보  
 
 File: **rawdata1.RSEM.isoforms.results**  
@@ -451,3 +453,43 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 사용할 수 있는 database 는 근연종이 genome 이 있다면 해당 genome data  
  
 그렇지 않다면 swissprot, KEGG, UniRef 등에 BLAST 를 통해 해당 유전자들의 기능을 유추  
+
+## 7-1 Homolgy Search
+
+File: **swissprot.fasta, Trinity.fasta.transdecoder.pep.cdhit**  
+Tool: **Blast**
+
+#### 커맨드
+
+    ncbi-blast-2.x.x+/bin/blastp -query Trinity.fasta.transdecoder.pep.cdhit -db swissprot.fasta -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 8 > blastp.outfmt6  
+
+#### 옵션
+-query: db에 search 할 sequence 파일  
+
+-db: database  
+
+-max_target_seqs: 해당 query가 matching 되는 sequence 중 몇개를 보여줄지에 대한 parameter  
+
+-outfmt: output의 format에 대한 정보 (0~11 까지 있으며 6 은 tabular format)  
+
+-evalue: blast evalue cutoff  
+
+-num_threads: 사용할 cpu 수  
+
+#### 결과
+**blastp.outfmt6** 위의 blastp.outfmt6와 다른 파일임
+
+
+## 7-2 TMM normalized FPKM , Annotation Data parsing
+
+TMM normalized FPKM에서 Homology Search 결과인 blastp.outfmt6 파일의 정보만 뽑아내는 과정
+
+File: **blastp.outfmt6, RSEM.isoform.counts.matrix.TMM_normalized.FPKM**  
+Tool: **Python Code**
+
+#### 커맨드
+
+    Python Code  
+
+#### 결과
+**Annotated protein TMM normalized FPKM**
