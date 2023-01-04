@@ -489,7 +489,7 @@ Tool: **Python Code**
 
 #### 커맨드
 
-    Python Code  
+    7-2. Annotatied TMM_FPKM.ipynb 참조  
 
 #### 결과
-**Annotated protein TMM normalized FPKM**
+**Annotated TMM_FPKM**
