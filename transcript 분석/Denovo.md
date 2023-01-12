@@ -103,11 +103,11 @@ simple clip threshold == single-ended data의 경우 score 값(10) /약 17 bases
 **output_forward_unpaired.fq**  
 **output_reverse_unpaired.fq**  
 
-# **2. Concatenation of reads**
+# **2. Concatenation of samples data**
 
 De novo RNA-seq 분석을 하게 된다면 일반적으로 여러 samples(주로 multiple tissues)을 가지고 시작
 genome 이 없다보니 genome 과 유사한 역할을 할 수 있는 transcriptome assembly 제작 필요  
-이때 comprehensive 한 transcriptome assembly 를 만들기 위해 여러 samples 의 RNA-seq data를 concatenation  
+이때 최대한 많은 transcriptome 정보가 담긴 transcriptome assembly 를 만들기 위해 여러 sample의 RNA-seq data를 한개의 파일로 만들어 줌
 forward끼리, reverse끼리 concat  
 
 
@@ -493,3 +493,20 @@ Tool: **Python Code**
 
 #### 결과
 **Annotated TMM_FPKM**
+
+
+## 7-3 PCA 분석 및 Heatmap 확인
+
+PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
+이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
+Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
+
+File: **Annotated TMM_FPKM**  
+Tool: **Python Code**
+
+#### 커맨드
+
+    7-3. PCA,correlation.ipynb 참조  
+
+#### 결과
+**PCA,Heatmap graph**
