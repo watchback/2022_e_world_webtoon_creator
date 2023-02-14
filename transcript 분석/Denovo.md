@@ -231,7 +231,7 @@ Tool: **TransDecoder**
 
 #### 커맨드
 
-    TransDecoder.Predict -t Trinity.fasta --retain_blastp_hits blastp.outfmt6 --cpu 8 --single_best_orf
+    TransDecoder.Predict -t Trinity.fasta --retain_blastp_hits blastp.outfmt6 --cpu 8 --single_best_only
 
 #### 옵션
 -t:  Trinity assembly 파일  
