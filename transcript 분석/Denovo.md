@@ -1,7 +1,5 @@
 # **0) Raw data 및 환경설정**
 #### 필요한 software  
-  
-PATH 설정 필요  
 
 - Trimmomatic  
 
@@ -25,7 +23,7 @@ PATH 설정 필요
 
 - Python  
 
-
+PATH 설정 필요  
 
 ---
 #### RAW DATA
@@ -223,7 +221,7 @@ Tool: **Blast**
 
 ---
 
-### 4.2.3) Gene prediction
+### 4.3) Gene prediction
 
 이제 blast 결과를 토대로 gene prediction 을 진행  
 transcripts.transdecoder_dir 가 있는 directory 에서 진행  
@@ -249,7 +247,7 @@ Tool: **TransDecoder**
 
 ---
 
-### 4.2.4) Removing redundant transcripts
+### 4.4) Removing redundant transcripts
 (4-2-1)~(4-2-3) 과정을 통해 gene prediction 은 완료되었으나, transcriptome 이다 보니 불가피하게 isoforms 이 존재  
 Reference genome 의 역할을 하기 위해 representative protein coding genes 만 있는게 좋으므로, redundant 한 transcripts 를 제거하기 위해 CD-hit 사용  
 .cdhit 파일은 sequence,  .cdhit.clstr 파일에는 cluster 가 어떻게 묶였는지에 대한 정보가 담긺  
@@ -451,36 +449,6 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 #### 결과
 **diffExpr 의 prefix 가 붙은 파일** 
 
-## 6.5) TMM normalized FPKM , Annotation Data parsing
-
-TMM normalized FPKM에서 Homology Search 결과인 blastp.outfmt6 파일의 정보만 뽑아내는 과정
-
-File: **blastp.outfmt6, RSEM.isoform.counts.matrix.TMM_normalized.FPKM**  
-Tool: **Python Code**
-
-#### 커맨드
-
-    6.5) Annotatied TMM_FPKM.ipynb 참조  
-
-#### 결과
-**Annotated TMM_FPKM**
-
-
-## 6.6) PCA 분석 및 Heatmap 확인
-
-PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
-이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
-Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
-
-File: **Annotated TMM_FPKM**  
-Tool: **Python Code**
-
-#### 커맨드
-
-    6.6) PCA,correlation.ipynb 참조  
-
-#### 결과
-**PCA,Heatmap graph**  
 
 
 # 7) Annotation
@@ -528,13 +496,38 @@ Tool: **3**
 ## 7.3) DEGs Annotation concat
 6의 과정에서 얻은 DEGs 정보와 Annotation 정보를 합쳐줌  
 
-File: **swissprot.fasta, Trinity.fasta.transdecoder.pep.cdhit**  
-Tool: **Blast**
+TMM normalized FPKM에서 Homology Search 결과인 blastp.outfmt6 파일의 정보만 뽑아내는 과정
+
+File: **blastp.outfmt6, RSEM.isoform.counts.matrix.TMM_normalized.FPKM**  
+Tool: **Python Code**
 
 #### 커맨드
 
+    7.3) Annotatied TMM_FPKM.ipynb 참조  
 
-## 7.4) DEGs David 
+#### 결과
+**Annotated TMM_FPKM**
+
+# 8) DEGs Analysis
+
+## 8.1) PCA 분석 및 Heatmap 확인
+
+PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
+이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
+Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
+
+File: **Annotated TMM_FPKM**  
+Tool: **Python Code**
+
+#### 커맨드
+
+    8.1) PCA,correlation.ipynb 참조  
+
+#### 결과
+**PCA,Heatmap graph**  
+
+
+## 8.2) DEGs David 
 DEGs Annotated 파일에서 Protein ID를 David DB에 넣어 어떤 기능을 하는지 확인
 찾으려고 하는 기능들이 있는지 확인  
 
