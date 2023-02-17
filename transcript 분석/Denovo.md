@@ -221,7 +221,7 @@ Tool: **Blast**
 
 ---
 
-### 4.3) Gene prediction
+## 4.3) Gene prediction
 
 이제 blast 결과를 토대로 gene prediction 을 진행  
 transcripts.transdecoder_dir 가 있는 directory 에서 진행  
@@ -247,7 +247,7 @@ Tool: **TransDecoder**
 
 ---
 
-### 4.4) Removing redundant transcripts
+## 4.4) Removing redundant transcripts
 (4-2-1)~(4-2-3) 과정을 통해 gene prediction 은 완료되었으나, transcriptome 이다 보니 불가피하게 isoforms 이 존재  
 Reference genome 의 역할을 하기 위해 representative protein coding genes 만 있는게 좋으므로, redundant 한 transcripts 를 제거하기 위해 CD-hit 사용  
 .cdhit 파일은 sequence,  .cdhit.clstr 파일에는 cluster 가 어떻게 묶였는지에 대한 정보가 담긺  
@@ -278,7 +278,7 @@ Tool: **CDHit**
 
 # 5) Gene expression level quantification
 
-### 5.1) NRCDS_Trinity.fasta 파일 생성
+## 5.1) NRCDS_Trinity.fasta 파일 생성
 NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 sequence id 를 *de novo* assembly 파일인 Trinity.fasta 에 matching 하여 nucleotide sequence 를 얻는다.  
     
 커맨드 줄 해석  
