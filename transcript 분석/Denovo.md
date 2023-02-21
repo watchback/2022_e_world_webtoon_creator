@@ -355,7 +355,7 @@ Tool: **Trinity 내의 util/abundance_estimates_to_matrix.pl**
 
 #### 커맨드
 
-    Trinity tool path/util/abundance_estimates_to_matrix.pl --est_method RSEM --out_prefix ABC  rawdata1.RSEM.isoforms.results rawdata2.RSEM.isoforms.results    
+    Trinity tool path/util/abundance_estimates_to_matrix.pl --est_method RSEM --out_prefix ABC  rawdata1.RSEM.isoforms.results rawdata2.RSEM.isoforms.results -gene_trans_map none --name_sample_by_basedir  
 
 #### 옵션
 --est_method:  abundance estimation 할때 썻던 method  
@@ -410,7 +410,7 @@ Tool: **Linux command**
 ### 6.3.2) Normalization  
 RNA-seq normalization 방법중 하나인 TMM normalization 방법을 사용  
 
-File: **rawdata1.RSEM.isoforms.results**  
+File: **counts.matrix**  
 Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
 
 #### 커맨드
@@ -418,7 +418,7 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
     Trinity tool path/Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl --matrix counts.matrix --length Trinity.trans_lengths.txt  
 
 #### 옵션
---matrix:  앞서 얻었던 counts.matrix 파일  
+--matrix:  앞서 얻었던 isoform.counts.matrix 파일  
 
 --length:  앞서 얻었던 Trinity.trans_lengths.txt 파일  
 
@@ -432,7 +432,7 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
   
 log2.centered.dat가 붙은 파일들이 있는데 이는 절대적인 발현값이 아닌 상대적인 발현값으로 계산한 정보  
 
-File: **rawdata1.RSEM.isoforms.results**  
+File: **isoform.counts.matrix.TMM_normalized.FPKM**  
 Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
 
 #### 커맨드
@@ -440,7 +440,7 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
     Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.001    
 
 #### 옵션
---matrix: 앞서 얻었던 couts.matrix.TMM_normalized.FPKM 파일
+--matrix: 앞서 얻었던 counts.matrix.TMM_normalized.FPKM 파일
 
 -C: Log2 foldchange 로 2는 발현값이 4배 높거나 4배 낮은 기준 (DEGs cutoff)
 
@@ -486,11 +486,24 @@ Tool: **Blast**
 ## 7.2) Homolgy Search 후 중복 Annotated Genes 제거
 Homolgy Search 후 중복 Annotated 유전자 제거
 가장 긴 Gene만 남김  
+커맨드 설명
+1. 
 
 File: **3**  
 Tool: **3**
 
 #### 커맨드  
+
+    awk '{print $1}' dendro_blastp.outfmt6 > output.txt
+    sed 's/.p/ /g' output.txt > output2.txt
+    awk '{print $1}' output2.txt > dendro_blastp_ID.txt
+    xargs samtools faidx /home/KHJ/KIM/Denovo/dendropanax/3.transDecoder/1.NRCDS/NRCDS/NRCDS_sequence.fasta <dendro_blastp_ID.txt> NRCDS_blast.fasta
+    sed 's/.p/ /g' dendro_blastp.fasta > output.txt
+    cat output.txt | awk '{$2=""; print $0}' > output2.txt
+    scp로 파일 가져오기
+    NRCDS_blast_length.ipynb 참조
+    
+
 
 
 ## 7.3) DEGs Annotation concat
