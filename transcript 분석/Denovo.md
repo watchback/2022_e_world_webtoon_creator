@@ -286,7 +286,7 @@ NRCDS 파일에 대응되는 nucleotide sequence 가 필요, NRCDS 파일의 seq
 2) .p 제거  
 3) .p 뒤에 있던 숫자 제거  
 4) 앞의 > 제거  
-5) TrinitypepID와 neucleotide sequence mapping  
+5) TrinityID와 neucleotide sequence mapping  
   
 
 File: **Trinity.fasta.transdecoder.pep.cdhit, Trinity.fasta**  
@@ -410,7 +410,7 @@ Tool: **Linux command**
 ### 6.3.2) Normalization  
 RNA-seq normalization 방법중 하나인 TMM normalization 방법을 사용  
 
-File: **counts.matrix**  
+File: **isoform.counts.matrix**  
 Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
 
 #### 커맨드
@@ -494,16 +494,14 @@ Tool: **3**
 
 #### 커맨드  
 
-    awk '{print $1}' dendro_blastp.outfmt6 > output.txt
-    sed 's/.p/ /g' output.txt > output2.txt
-    awk '{print $1}' output2.txt > dendro_blastp_ID.txt
+    sed 's/.p/ /g' dendro_blastp.outfmt6 > output.txt
+    sed 's/|/ /g' output.txt > output2.txt
+    cat output2.txt | awk '{$2=""; print $0}' > output3.txt
+    awk '{print $1}' output3.txt > dendro_blastp_ID.txt
     xargs samtools faidx /home/KHJ/KIM/Denovo/dendropanax/3.transDecoder/1.NRCDS/NRCDS/NRCDS_sequence.fasta <dendro_blastp_ID.txt> NRCDS_blast.fasta
-    sed 's/.p/ /g' dendro_blastp.fasta > output.txt
-    cat output.txt | awk '{$2=""; print $0}' > output2.txt
-    scp로 파일 가져오기
+    output3, NRCDS_blast2.fasta scp로 파일 가져오기
     NRCDS_blast_length.ipynb 참조
     
-
 
 
 ## 7.3) DEGs Annotation concat
