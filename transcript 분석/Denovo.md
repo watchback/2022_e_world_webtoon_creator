@@ -273,8 +273,21 @@ Tool: **CDHit**
 **Trinity.fasta.transdecoder.pep.cdhit**  
 **Trinity.fasta.transdecoder.pep.cdhit.clstr**  
 
----
+## 4.5) PCA 분석 및 Heatmap 확인
 
+PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
+이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
+Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
+
+File: **Annotated TMM_FPKM**  
+Tool: **Python Code**
+
+#### 커맨드
+
+    8.1) PCA,correlation.ipynb 참조  
+
+#### 결과
+**PCA,Heatmap graph**  
 
 # 5) Gene expression level quantification
 
@@ -521,24 +534,7 @@ Tool: **Python Code**
 
 # 8) DEGs Analysis
 
-## 8.1) PCA 분석 및 Heatmap 확인
-
-PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
-이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
-Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
-
-File: **Annotated TMM_FPKM**  
-Tool: **Python Code**
-
-#### 커맨드
-
-    8.1) PCA,correlation.ipynb 참조  
-
-#### 결과
-**PCA,Heatmap graph**  
-
-
-## 8.2) DEGs David 
+## 8.1) DEGs David 
 DEGs Annotated 파일에서 Protein ID를 David DB에 넣어 어떤 기능을 하는지 확인
 찾으려고 하는 기능들이 있는지 확인  
 
