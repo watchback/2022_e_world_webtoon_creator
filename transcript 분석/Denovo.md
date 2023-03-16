@@ -9,6 +9,10 @@
 
 - Samtools  
 
+- jellyfish  
+
+- Salmon  
+
 - TransDecoder  
 
 - BLAST  
