@@ -424,11 +424,13 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 #### 결과
 **.counts.matrix.TMM_normalized.FPKM**  
 
-## 6.4) PCA 분석 및 Heatmap 확인
+## 6.4) PCA 분석 및 Correlation Heatmap 확인
 
 PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
 이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
-Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
+Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 Correlation Heatmap 그림  
+All Gene과 FPKM > 1 Gene 두가지를 먼저 보는데 1의 기준은 FPKM 1~2가 세포당 약 1 mRNA분자이고 최소 발현량을 나타내기 때문에 qPCR에 확인이 가능한 수치이기 때문  
+여기서 어떻게 Sample 이 묶여있나에 따라 다음 분석 진행
 
 File: **Annotated TMM_FPKM**  
 Tool: **Python Code**
@@ -452,7 +454,7 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 
 #### 커맨드
 
-    Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.001    
+    Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.05    
 
 #### 옵션
 --matrix: 앞서 얻었던 counts.matrix.TMM_normalized.FPKM 파일
