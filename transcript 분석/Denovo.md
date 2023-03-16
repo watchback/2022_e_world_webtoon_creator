@@ -273,21 +273,7 @@ Tool: **CDHit**
 **Trinity.fasta.transdecoder.pep.cdhit**  
 **Trinity.fasta.transdecoder.pep.cdhit.clstr**  
 
-## 4.5) PCA 분석 및 Heatmap 확인
-
-PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
-이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
-Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
-
-File: **Annotated TMM_FPKM**  
-Tool: **Python Code**
-
-#### 커맨드
-
-    8.1) PCA,correlation.ipynb 참조  
-
-#### 결과
-**PCA,Heatmap graph**  
+---
 
 # 5) Gene expression level quantification
 
@@ -438,7 +424,23 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 #### 결과
 **.counts.matrix.TMM_normalized.FPKM**  
 
-## 6.4) Identifying DEGs
+## 6.4) PCA 분석 및 Heatmap 확인
+
+PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인  
+이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
+Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
+
+File: **Annotated TMM_FPKM**  
+Tool: **Python Code**
+
+#### 커맨드
+
+    6.4) PCA,correlation.ipynb 참조  
+
+#### 결과
+**PCA,Heatmap graph**  
+
+## 6.5) Identifying DEGs
 위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
   
 결과에는 위의 기준 (-C, -P) 에 충족하는 DEGs 들이 모여있음  
