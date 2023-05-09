@@ -442,6 +442,7 @@ Tool: **Python Code**
 #### 결과
 **PCA,Heatmap graph**  
 
+
 ## 6.5) Identifying DEGs
 위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
   
@@ -465,7 +466,6 @@ Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_
 
 #### 결과
 **diffExpr 의 prefix 가 붙은 파일** 
-
 
 
 # 7) Annotation
@@ -506,8 +506,8 @@ Homolgy Search 후 중복 Annotated 유전자 제거
 커맨드 설명
 1. 
 
-File: **3**  
-Tool: **3**
+File: ** - **  
+Tool: ** - **
 
 #### 커맨드  
 
@@ -534,7 +534,54 @@ Tool: **Python Code**
     7.3) Annotatied TMM_FPKM.ipynb 참조  
 
 #### 결과
-**Annotated TMM_FPKM**
+**Annotated TMM_FPKM**  
+  
+  
+# What If... ) PCA, Correlation Heatmap 분석 과정 중 이상한 점이 발견된다면...
+
+## What if...1 ) Heatmap이 같은 조건의 샘플끼리 묶이지 않음 or 같은 샘플임에도 Correlation 값이 너무 들쑥날쑥 함
+
+샘플, 조건 별로 TMM_normalized FPKM Matrix 값을 이용해 Correlation Graph를 그려 Gene 별 발현량 차이를 확인한다.  
+
+비슷한 조건, 샘플임에도 특정 Gene의 발현량의 차이가 유난히 많이 보임 -> Bacteria Contamination Check  
+
+#### 커맨드
+
+    6.4) PCA,correlation.ipynb 참조
+
+
+1. 샘플을 Blast로 Protein Annotation 한 결과로 확인을 하였는데 샘플을 Annotation한 Protein과 Bacteria가 만드는 Protein에 대한 DB와 비교해 보았다.  
+
+Model organism이 아니기 때문인지는 몰라도 겹치는 Protein이 낮게 나오는 결과를 보였다.  
+
+#### 커맨드
+
+    6-4.1) Bacteria Contam 확인.ipynb 참조
+
+
+2. 전체 Bacteria Gene을 다운받아 cat하여 Bowtie2를 이용해 Trimming 된 샘플 데이터를 이용하여 Bacteria Gene에 얼마나 Mapping 되는지 확인한다.(Mapping 많이 될수록 많은 Contam)  
+
+Bowtie2 Mapping 과정에서 나온 SAM file을 samtools를 이용해 BAM file로 바꾸어준다.  
+
+BAMfile에서 unmapped 된 시퀀스만 추출하여 Fastq파일로 만들어준다.  
+
+샘플 별 Fastq파일을 cat 해준 뒤 Trinity 실행하여 Contam된 시퀀스를 제거한 clean 시퀀스로 De novo assembly를 진행한다.  
+
+#### 커맨드
+
+    1. NCBI -> Taxonomy -> Taxonomy Browser -> Bacteria -> Bacteria -> Genome subtree link -> Bacteria Genome download
+    2. 압축 해제 후 리눅스 쉘에서 cat Bacteria_Genome -> Merged_bact.fasta
+    3. bowtie2-build --threads 70 Merged_bact.fasta BacT
+    4. bowtie2 --threads 10 -x BacT -1 3B1r_1_paired.fastq -2 3B1r_2_paired.fastq -S 3B1.sam
+    5. samtools view -bS 3B1.sam > 3B1.bam
+    6. samtools view -bf 0x04 out.bam > unmap3B1.bam
+    7. samtools bam2fq unmap3B1.bam > clean3B1.fastq
+    8. cat clean3B1.fastq | grep '^@.*/1$' -A 3 --no-group-separator > clean3B1_r1.fastq
+    9. cat clean3B1.fastq | grep '^@.*/2$' -A 3 --no-group-separator > clean3B1_r2.fastq
+    10. cat All_cleanSamples_r1.fastq > clean_merge_r1.fastq
+    11. cat All_cleanSamples_r2.fastq > clean_merge_r2.fastq
+    12. Trinity --seqType fq --left cleanMerge_r1.fastq --right cleanMerge_r2.fastq --output trinity_clean_dendro --max_memory 500G --CPU 40  
+
 
 # 8) DEGs Analysis
 
