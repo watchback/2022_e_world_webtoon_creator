@@ -514,9 +514,6 @@ BAMfile에서 unmapped 된 시퀀스만 추출하여 Fastq파일로 만들어준
 ### if. 4) 4번으로 돌아가서 다시 분석하시오.  
   
   
-=======
-
->>>>>>> e9ff8a4f1eb1cbb93fa20e48fe1152cc71a31538:transcript 분석/Denovo.md
 ## 6.5) Identifying DEGs
   
 위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
@@ -615,8 +612,6 @@ Tool: **Python Code**
 **Annotated TMM_FPKM**  
   
   
-<<<<<<< HEAD:omics/RNA-seq.md
-=======
 # What If... ) PCA, Correlation Heatmap 분석 과정 중 이상한 점이 발견된다면...
 
 ## What if...1 ) Heatmap이 같은 조건의 샘플끼리 묶이지 않음 or 같은 샘플임에도 Correlation 값이 너무 들쑥날쑥 함
@@ -662,7 +657,6 @@ BAMfile에서 unmapped 된 시퀀스만 추출하여 Fastq파일로 만들어준
     11. cat All_cleanSamples_r2.fastq > clean_merge_r2.fastq
     12. Trinity --seqType fq --left cleanMerge_r1.fastq --right cleanMerge_r2.fastq --output trinity_clean_dendro --max_memory 500G --CPU 40  
 
->>>>>>> e9ff8a4f1eb1cbb93fa20e48fe1152cc71a31538:transcript 분석/Denovo.md
 
 # 8) DEGs Analysis
 
@@ -679,9 +673,7 @@ Tool: **David DB**
      
 
 #### 결과
-**Gene function**
-<<<<<<< HEAD:omics/RNA-seq.md
-  
+**Gene function**  
   
 
 
@@ -706,5 +698,4 @@ pb-assembly는 *De novo* genome assembly에 사용하는 툴로 pb-falcon, pb-da
   
 File: **PacBio_DNA_subreads_1,2**  
 Tool: **pb-assembly Falcon** 
-=======
->>>>>>> e3d331ec85d49897359a2de028582162ec216830:transcript 분석/Denovo.md
+
