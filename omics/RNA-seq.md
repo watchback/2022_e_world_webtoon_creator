@@ -452,17 +452,31 @@ PCA분석과 Heatmap을 이용하여 데이터의 분포를 확인
 이는 보통 같은 tissue인 샘플끼리 모이는 경향이 있는데 데이터가 제대로 나왔는지 확인도 하고 발현량이 다른 샘플을 확인하기 위해 사용  
 Python으로 PCA를 하면 문제가 있다고 해서 R을 이용해 PCA rotation 데이터를 가져와 Python에서 그래프만 그림 <- 파이썬에서 제대로 안 되는것이 맞는지 확인필요  
 
+
+### 6.4.1) R PCA rotation
+
+Python PCA와 R PCA에는 차이가 좀 있는데 R PCA의 rotation 값이 필요하기 때문에 R PCA의 rotation 값을 가져와 PCA를 그림  
+  
 File: **Annotated TMM_FPKM**  
-Tool: **Python Code**
+Tool: **R Code**  
+  
+#### 커맨드
+
+    FPKM <- read.csv(File,header=True)
+    FPKM <- FPKM[,c(2:sample_num)]
+    FPKMpca <- prcomp(FPKM)
+    write.csv(FPKMpca,"FPKMpca.csv")
+
+### 6.4.2) PCA ,Heatmap 그래프 그리기
 
 #### 커맨드
 
-    PCA,correlation.ipynb 참조  
+    R PCA,correlation.ipynb 참조
 
 #### 결과
 **PCA,Heatmap graph**  
   
-  
+
 ## if ) Heatmap이 같은 조건의 샘플끼리 묶이지 않음 or 같은 샘플임에도 Correlation 값의 편차가 심하다면
 ### if. 1) Bacteria Contamination Check in Annotation Level
 
@@ -511,34 +525,9 @@ BAMfile에서 unmapped 된 시퀀스만 추출하여 Fastq파일로 만들어준
     7. cat All_cleanSamples_r2.fastq > clean_merge_r2.fastq
     8. Trinity --seqType fq --left cleanMerge_r1.fastq --right cleanMerge_r2.fastq --output trinity_clean_dendro --max_memory 500G --CPU 40  
 
-### if. 4) 4번으로 돌아가서 다시 분석하시오.  
+### 4번으로 돌아가서 다시 분석하시오.  
   
   
-## 6.5) Identifying DEGs
-  
-위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
-  
-결과에는 위의 기준 (-C, -P) 에 충족하는 DEGs 들이 모여있음  
-  
-log2.centered.dat가 붙은 파일들이 있는데 이는 절대적인 발현값이 아닌 상대적인 발현값으로 계산한 정보  
-
-File: **isoform.counts.matrix.TMM_normalized.FPKM**  
-Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
-
-#### 커맨드
-
-    Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.001    
-
-#### 옵션
---matrix: 앞서 얻었던 counts.matrix.TMM_normalized.FPKM 파일
-
--C: Log2 foldchange 로 2는 발현값이 4배 높거나 4배 낮은 기준 (DEGs cutoff)
-
--P: 통계값  corrected p-value (FDR) 로 0.001 은  0.001 미만의 기준 (DEGs cutoff)
-
-#### 결과
-**diffExpr 의 prefix 가 붙은 파일** 
-
 
 # 7) Annotation
   
@@ -614,7 +603,33 @@ Tool: **Python Code**
 
 # 8) DEGs Analysis
 
-## 8.1) DEGs David 
+## 8.1) Identifying DEGs
+  
+위에서 얻은  .counts.matrix.TMM_normalized.FPKM 파일을  edgeR_dir 로 이동  
+  
+결과에는 위의 기준 (-C, -P) 에 충족하는 DEGs 들이 모여있음  
+  
+log2.centered.dat가 붙은 파일들이 있는데 이는 절대적인 발현값이 아닌 상대적인 발현값으로 계산한 정보  
+
+File: **isoform.counts.matrix.TMM_normalized.FPKM**  
+Tool: **Trinity 의 Analysis/DifferentialExpression/run_TMM_normalization_write_FPKM_matrix.pl**
+
+#### 커맨드
+
+    Trinity tool path/Analysis/DifferentialExpression/analyze_diff_expr.pl --matrix .counts.matrix.TMM_normalized.FPKM -C 2 -P 0.001    
+
+#### 옵션
+--matrix: 앞서 얻었던 counts.matrix.TMM_normalized.FPKM 파일
+
+-C: Log2 foldchange 로 2는 발현값이 4배 높거나 4배 낮은 기준 (DEGs cutoff)
+
+-P: 통계값  corrected p-value (FDR) 로 0.001 은  0.001 미만의 기준 (DEGs cutoff)
+
+#### 결과
+**diffExpr 의 prefix 가 붙은 파일** 
+
+
+## 8.2) DEGs David 
   
 DEGs Annotated 파일에서 Protein ID를 David DB에 넣어 어떤 기능을 하는지 확인
 찾으려고 하는 기능들이 있는지 확인  
@@ -653,3 +668,55 @@ pb-assembly는 *De novo* genome assembly에 사용하는 툴로 pb-falcon, pb-da
 File: **PacBio_DNA_subreads_1,2**  
 Tool: **pb-assembly Falcon** 
 
+cfg 파일 세팅
+
+[General]
+input_fofn=input.fofn (Input File list File)
+input_type=raw (데이터 타입)
+pa_DBdust_option= (DBdust 옵션 - 낮은 complexity 시퀀스 마스킹)
+pa_fasta_filter_option=streamed-median (중앙값 길이 이상의 리드만 필터링)
+target=assembly (Genome assembly 실행)
+skip_checks=False (품질 검사등의 데이터 검사 건너 뛸지 여부)
+LA4Falcon_preload=false (데이터 프리로드 사용 여부 - 대용량 메모리에서 사용)
+
+##### Data Partitioning
+pa_DBsplit_option=-x500 -s200 (시퀀싱 데이터 파티션 분할 옵션)
+ovlp_DBsplit_option=-x500 -s200 (오버랩 데이터 파티션 분할 옵션)
+
+##### Repeat Masking
+pa_HPCTANmask_option= (반복구조 마스킹 옵션)
+#no-op repmask param set
+pa_REPmask_code=0,300;0,300;0,300 (거리가 있는 구간 범위, 크기 마스킹 옵션)
+  
+##### Pre-assembly
+genome_size = 1200000000 (estimate Genome size) 
+seed_coverage = 20 (초기에 사용되는 seed 리드의 커버 범위 옵션 20-40 권장)
+length_cutoff = 10,000 ->  (일정 길이 이상의 리드만 사용 -1은 자동선택 :39786 사용 됨 )
+pa_HPCdaligner_option=-v -B128 -M24 (dailgner 리소스 관련 옵션)
+pa_daligner_option= -k18 -e0.80 -l2000 -h480 -w8 -s100
+(daligner search 옵션 -k: kmer size -e: correlation -l: minimum overlap
+-w: kmer 대각선 폭(2^w) -h : kmer 커버 범위 -s : s bp 마다 희소 인코딩 정렬)
+falcon_sense_option=--output-multi --min-idt 0.70 --min-cov 4 --max-n-read 200
+(Concensus calling option)
+falcon_sense_greedy=False
+
+##### Pread overlapping
+ovlp_HPCdaligner_option=-v -B128 -M24 
+ovlp_daligner_option= -k24 -e.92 -l1800 -h60 -s100
+(error-corrected read overlapping 단계 이전 옵션과 비슷한데 마스킹이 
+일어나지 않고 중복이 식별되어 최종 단계로 전달)
+
+##### Final Assembly
+length_cutoff_pr=1000 (pre-assembled preads 최소 길이)
+overlap_filtering_setting=--max-diff 100 --max-cov 100 --min-cov 2
+(max-diff: 오버랩 되는 리드중 5'와 3' 말단에 지정 값보다 더 차이가 있는 리드 필터
+max-cov: 최대 overlap coverage, contam, repeat에 의한 overlap 필터링
+min-cov: 최소 overlap coverage 값이 너무 낮으면 많은 리소스, 에러발생)
+fc_ovlp_to_graph_option=
+(pread overlap 필터링 기준)
+
+#### 커맨드
+
+     fc_run sample.cfg
+
+#### 결과
