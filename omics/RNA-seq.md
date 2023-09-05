@@ -9,10 +9,6 @@
 
 - Samtools  
 
-- jellyfish  
-
-- Salmon  
-
 - TransDecoder  
 
 - BLAST  
@@ -21,17 +17,23 @@
 
 - RSEM  
 
+- pb-assembly   
+
+- pbbam   
+
+- BUSCO   
+
+- pilon   
+
 - R  
 
 - R packages (edgeR, ctc, Biobase, ape, gplots 등)
 
 - Python  
 
-직접 설치 및 PATH 설정 필요  
+bioconda 설치 or 직접 설치, PATH 설정 필요  
   
-or
-  
-Bioconda를 이용해 설치하면 간편하지만 가끔 Bioconda를 통해 설치하여도 동작하지 않는 경우 직접 설치 하는 방법도 알아야 함
+Bioconda를 이용해 설치하면 간편하나 가끔 Bioconda를 통해 설치하여도 동작하지 않는 경우 직접 설치 하는 방법도 알아야 함
   
   
 ---
@@ -635,10 +637,15 @@ DEGs Annotated 파일에서 Protein ID를 David DB에 넣어 어떤 기능을 �
 찾으려고 하는 기능들이 있는지 확인  
 
 File: **DEGs Annotated list**  
-Tool: **David DB**
+Tool: **David DB**   
 
 #### 커맨드
 
+     DAVID (https://david.ncifcrf.gov/) 접속
+     Start analysis
+     Upload Gene list -> Select identifier -> Gene list -> Submit list
+     List -> Select species -> annotate
+     Gene Ontology(BP,CC,MF), KEGG pathway 확인
      
 
 #### 결과
@@ -646,7 +653,7 @@ Tool: **David DB**
   
 
 
-# 9) Genome Data 있을 경우 -> Reference Based Transcriptome Analysis 병행
+# 9) Genome Data 있다면 Reference Based Transcriptome Analysis 병행
   
 ## 9.1) Reference Genome
 
@@ -703,8 +710,7 @@ falcon_sense_greedy=False
 ##### Pread overlapping
 ovlp_HPCdaligner_option=-v -B128 -M24 
 ovlp_daligner_option= -k24 -e.92 -l1800 -h60 -s100
-(error-corrected read overlapping 단계 이전 옵션과 비슷한데 마스킹이 
-일어나지 않고 중복이 식별되어 최종 단계로 전달)
+(error-corrected read overlapping 단계 이전 옵션과 비슷한데 마스킹이 일어나지 않고 중복이 식별되어 최종 단계로 전달)
 
 ##### Final Assembly
 length_cutoff_pr=1000 (pre-assembled preads 최소 길이)
@@ -715,8 +721,108 @@ min-cov: 최소 overlap coverage 값이 너무 낮으면 많은 리소스, 에�
 fc_ovlp_to_graph_option=
 (pread overlap 필터링 기준)
 
+[job.defaults]
+job_type=local
+pwatcher_type=blocking
+JOB_QUEUE=default
+MB=32768
+NPROC=8
+njobs=4
+submit = bash -C ${CMD} >| ${STDOUT_FILE} 2>| ${STDERR_FILE} \
+  -q ${JOB_QUEUE}     \
+  -N ${JOB_NAME}      \
+  -o "${JOB_STDOUT}"  \
+  -e "${JOB_STDERR}"  \
+  -pe smp ${NPROC}    \
+  -l h_vmem=${MB}M    \
+  "${JOB_SCRIPT}"
+
+[job.step.da]
+NPROC=4
+MB=49152
+njobs=16
+[job.step.pda]
+NPROC=4
+njobs=16
+[job.step.la]
+NPROC=4
+njobs=16
+[job.step.pla]
+NPROC=4
+njobs=16
+[job.step.cns]
+NPROC=4
+njobs=16
+[job.step.asm]
+NPROC=24
+MB=196608
+njobs=1
+
 #### 커맨드
 
      fc_run sample.cfg
 
 #### 결과
+**0-Rawreads, 1-preads_ovl, 2-asm-falcon** 디렉토리 내의 p_ctg.fasta
+
+
+### 9.1.2) Read alignment & Polishing (Falcon [fc_unzip])
+
+
+File: **0-Rawreads, 1-preads_ovl, 2-asm-falcon, PacBio_DNA_subreads_1,2, subreads_bam_1,2**  
+Tool: **pb-assembly Falcon_unzip** 
+
+cfg 파일 세팅
+
+[General]
+max_n_open_files = 1000
+
+[Unzip]
+input_fofn=input.fofn (Input File list File)
+input_bam_fofn=input_bam.fofn (Input bam list File)
+polish_include_zmw_all_subreads = true
+
+[job.defaults]
+job_type=local
+pwatcher_type=blocking
+JOB_QUEUE=default
+MB=32768
+NPROC=8
+njobs=4
+submit = bash -C ${CMD} >| ${STDOUT_FILE} 2>| ${STDERR_FILE} \
+  -q ${JOB_QUEUE}     \
+  -N ${JOB_NAME}      \
+  -o "${JOB_STDOUT}"  \
+  -e "${JOB_STDERR}"  \
+  -pe smp ${NPROC}    \
+  -l h_vmem=${MB}M    \
+  "${JOB_SCRIPT}"
+
+[job.step.unzip.track_reads]
+njobs=4
+NPROC=16
+##### uses minimap2 now
+[job.step.unzip.blasr_aln]
+njobs=4
+NPROC=16
+[job.step.unzip.phasing]
+njobs=4
+NPROC=16
+[job.step.unzip.hasm]
+njobs=4
+NPROC=16
+##### uses arrow now
+[job.step.unzip.quiver]
+njobs=48
+NPROC=1
+MB=196608
+
+#### 커맨드
+
+     fc_unzip.py sample_unzip.cfg
+
+#### 결과
+**3-unzip, 4-polish** 디렉토리 내의 p_ctg.fasta
+
+
+### 9.1.3) Error correction (Pilon)
